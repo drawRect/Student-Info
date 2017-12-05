@@ -15,7 +15,7 @@ enum SexualType:String {
 }
 
 struct Student {
-    struct SerializebleKeys {
+    fileprivate struct SerializebleKeys {
         static let kStudentNameKey:String = "name"
         static let kStudentAgeKey:String = "age"
         static let kStudentColorKey:String = "color"

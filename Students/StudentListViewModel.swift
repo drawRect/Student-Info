@@ -38,5 +38,4 @@ extension StudentListViewModel:TableListViewModel {
     public func titleForHeaderIn(section:Int)->String {
         return Array(students.sectionedStudents.keys)[section].rawValue
     }
-    
 }

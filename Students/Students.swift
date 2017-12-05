@@ -9,7 +9,7 @@
 import Foundation
 
 struct Students {
-    struct SerializebleKeys {
+   fileprivate struct SerializebleKeys {
         static let kStudentsResponseKey:String = "Students"
     }
     let sectionedStudents:[SexualType:[Student]]

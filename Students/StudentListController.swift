@@ -12,7 +12,7 @@ import UIKit
 //MARK: - Models
 typealias JSONSignature = Dictionary<String,[[String:String]]>
 
-let jsonResponse:JSONSignature = ["Students":[["name":"Mani","age":"27","color":"Red","address":"Bangalore","sex": "Male"],["name":"Ravi","age":"22","color":"bule","address":"Kelerala","sex":"Male"],["name":"Siva","age":"25","color":"Green","address":"Mumbai","sex":"Male"],["name":"Priya","age":"19","color":"yello","address":"Dehli","sex":"Female"],["name":"Rani","age":"17","color":"Red","address":"Chennai","sex":"Female"],["name":"Gopalan","age":"37","color":"Red","address":"Delhi","sex":"Other"],["name":"Kamal","age":"47","color":"Red","address":"Kolkata","sex":"Other"]]]
+let jsonResponse:JSONSignature = ["Students":[["name":"Mani","age":"27","color":"Red","address":"Bangalore","sex": "Male"],["name":"Ravi","age":"22","color":"Bule","address":"Kerala","sex":"Male"],["name":"Siva","age":"25","color":"Green","address":"Mumbai","sex":"Male"],["name":"Priya","age":"19","color":"Yellow","address":"Dehli","sex":"Female"],["name":"Rani","age":"17","color":"Red","address":"Chennai","sex":"Female"],["name":"Gopalan","age":"37","color":"Red","address":"Delhi","sex":"Other"],["name":"Kamal","age":"47","color":"Red","address":"Kolkata","sex":"Other"]]]
 
 class StudentsListController:UIViewController {
     private lazy var _view:StudentListView = {return view as! StudentListView}()

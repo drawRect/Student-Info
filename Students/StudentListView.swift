@@ -8,7 +8,7 @@
 
 import UIKit
 //Rules:- Dont expose UIElements as Public
-//If you want write helper func to get an instance
+//If you want, write helper func to get an instance
 class StudentListView: UIView {
     //MARK: - iVars
     private let tableView: UITableView = {
@@ -31,4 +31,3 @@ class StudentListView: UIView {
         return tableView
     }
 }
-
