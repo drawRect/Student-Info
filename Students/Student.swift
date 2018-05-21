@@ -8,20 +8,14 @@
 
 import Foundation
 
-enum SexualType:String {
+enum SexualType: String, Codable {
     case Male = "Male"
     case Female = "Female"
     case Other = "Other"
 }
 
-struct Student {
-    fileprivate struct SerializebleKeys {
-        static let kStudentNameKey:String = "name"
-        static let kStudentAgeKey:String = "age"
-        static let kStudentColorKey:String = "color"
-        static let kStudentAddressKey:String = "address"
-        static let kStudentSexKey:String = "sex"
-    }
+struct Student: Codable {
+    
     let name,age,color,address,sex:String
     var sexualType:SexualType{
         switch self.sex {
@@ -33,14 +27,12 @@ struct Student {
             return .Other
         }
     }
-    let response:Dictionary<String,String>//BLOB
-    init(resp:Dictionary<String,String>) {
-        response = resp
-        self.name = resp[SerializebleKeys.kStudentNameKey]!
-        self.age = resp[SerializebleKeys.kStudentAgeKey]!
-        self.color = resp[SerializebleKeys.kStudentColorKey]!
-        self.address = resp[SerializebleKeys.kStudentAddressKey]!
-        self.sex = resp[SerializebleKeys.kStudentSexKey]!
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case age
+        case color
+        case address
+        case sex
     }
 }
 
