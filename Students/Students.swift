@@ -31,7 +31,7 @@ struct Students: Codable {
             
             if let s = try? JSONDecoder().decode(Student.self, from: jsonData) {
                 let filteredKeys = mutableSectionValues.keys.filter({k in k==s.sexualType})
-                if filteredKeys.count==0 {
+                if filteredKeys.isEmpty {
                     mutableSectionValues[s.sexualType] = [s]
                 }else {
                     var studs = mutableSectionValues[filteredKeys.first!]

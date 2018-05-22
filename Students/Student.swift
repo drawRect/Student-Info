@@ -16,13 +16,13 @@ enum SexualType: String, Codable {
 
 struct Student: Codable {
     
-    let name,age,color,address,sex:String
-    var sexualType:SexualType{
+    let name,age,color,address,sex: String
+    var sexualType: SexualType {
         switch self.sex {
         case SexualType.Male.rawValue:
-            return SexualType.Male
+            return .Male
         case SexualType.Female.rawValue:
-            return SexualType.Female
+            return .Female
         default:
             return .Other
         }
