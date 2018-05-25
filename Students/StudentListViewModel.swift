@@ -19,9 +19,11 @@ protocol TableListViewModel {
 class StudentListViewModel:NSObject {
     private let students:Students
     init(response:JSONSignature) {
-        students = Students.init(resp: response)
+        let jsonData = try! JSONSerialization.data(withJSONObject: response, options: JSONSerialization.WritingOptions.prettyPrinted)
+        students = try! JSONDecoder().decode(Students.self, from: jsonData)
     }
 }
+
 extension StudentListViewModel:TableListViewModel {
     typealias _source = Student
     public func numberOfSections()->Int {
