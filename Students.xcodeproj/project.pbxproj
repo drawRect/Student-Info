@@ -17,7 +17,6 @@
 		071C9DF21FD60D7C009E9D60 /* StudentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DF11FD60D7C009E9D60 /* StudentListView.swift */; };
 		071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */; };
 		078A9C9C20CBAF1F005C7922 /* Students.json in Resources */ = {isa = PBXBuildFile; fileRef = 078A9C9B20CBAF1F005C7922 /* Students.json */; };
-		078A9C9E20CBFBCE005C7922 /* StudentsListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9C9D20CBFBCE005C7922 /* StudentsListDataSource.swift */; };
 		078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9C9F20CBFE72005C7922 /* JSONLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		071C9DF11FD60D7C009E9D60 /* StudentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListView.swift; sourceTree = "<group>"; };
 		071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewModel.swift; sourceTree = "<group>"; };
 		078A9C9B20CBAF1F005C7922 /* Students.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Students.json; sourceTree = "<group>"; };
-		078A9C9D20CBFBCE005C7922 /* StudentsListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsListDataSource.swift; sourceTree = "<group>"; };
 		078A9C9F20CBFE72005C7922 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,20 +67,51 @@
 			isa = PBXGroup;
 			children = (
 				071C9DD71FD5E892009E9D60 /* AppDelegate.swift */,
-				071C9DED1FD60C3D009E9D60 /* StudentListController.swift */,
-				078A9C9D20CBFBCE005C7922 /* StudentsListDataSource.swift */,
-				071C9DF11FD60D7C009E9D60 /* StudentListView.swift */,
-				071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */,
-				071C9DEF1FD60C7F009E9D60 /* StudentInfoCell.swift */,
-				071C9DE91FD60A4B009E9D60 /* Students.swift */,
-				071C9DEB1FD60A65009E9D60 /* Student.swift */,
-				078A9C9F20CBFE72005C7922 /* JSONLoader.swift */,
-				078A9C9B20CBAF1F005C7922 /* Students.json */,
+				078A9CA120CD043C005C7922 /* Students */,
+				078A9CA220CD0458005C7922 /* Model */,
+				078A9CA320CD0460005C7922 /* Helper */,
+				078A9CA420CD046F005C7922 /* Resource */,
 				071C9DDE1FD5E892009E9D60 /* Assets.xcassets */,
 				071C9DE01FD5E892009E9D60 /* LaunchScreen.storyboard */,
 				071C9DE31FD5E892009E9D60 /* Info.plist */,
 			);
 			path = Students;
+			sourceTree = "<group>";
+		};
+		078A9CA120CD043C005C7922 /* Students */ = {
+			isa = PBXGroup;
+			children = (
+				071C9DED1FD60C3D009E9D60 /* StudentListController.swift */,
+				071C9DF11FD60D7C009E9D60 /* StudentListView.swift */,
+				071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */,
+				071C9DEF1FD60C7F009E9D60 /* StudentInfoCell.swift */,
+			);
+			path = Students;
+			sourceTree = "<group>";
+		};
+		078A9CA220CD0458005C7922 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				071C9DE91FD60A4B009E9D60 /* Students.swift */,
+				071C9DEB1FD60A65009E9D60 /* Student.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		078A9CA320CD0460005C7922 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				078A9C9F20CBFE72005C7922 /* JSONLoader.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		078A9CA420CD046F005C7922 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				078A9C9B20CBAF1F005C7922 /* Students.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078A9C9E20CBFBCE005C7922 /* StudentsListDataSource.swift in Sources */,
 				071C9DD81FD5E892009E9D60 /* AppDelegate.swift in Sources */,
 				078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */,
 				071C9DF01FD60C7F009E9D60 /* StudentInfoCell.swift in Sources */,
