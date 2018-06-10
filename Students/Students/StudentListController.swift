@@ -34,6 +34,7 @@ extension StudentsListController {
             case .success(let s):
                 DispatchQueue.main.async {
                     self?.viewModel.students = s
+                    self?._view.tableView.tableFooterView = UILabel("\(s.students.count) Students")
                     self?._view.tableView.reloadData()
                 }
             case .failure(let r):

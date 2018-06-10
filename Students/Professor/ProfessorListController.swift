@@ -31,9 +31,10 @@ extension ProfessorListController {
     private func loadDataSource() {
         viewModel.getDataSource(completion: {[weak self] (result) in
             switch result {
-            case .success(let s):
+            case .success(let p):
                 DispatchQueue.main.async {
-                    self?.viewModel.professors = s
+                    self?.viewModel.professors = p
+                    self?._view.tableView.tableFooterView = UILabel("\(p.professors.count) Professors")
                     self?._view.tableView.reloadData()
                 }
             case .failure(let r):

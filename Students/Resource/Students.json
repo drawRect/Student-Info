@@ -41,6 +41,13 @@
                  "color": "Red",
                  "address": "Kovai",
                  "sex": "Male"
+                 },
+                 {
+                 "name": "Kumar",
+                 "age": "24",
+                 "color": "Black",
+                 "address": "Delhi",
+                 "sex": "Male"
                  }
                  ]
 }

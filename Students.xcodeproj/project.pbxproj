@@ -27,6 +27,7 @@
 		078A9CB420CD1003005C7922 /* ProfessorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB020CD1003005C7922 /* ProfessorListView.swift */; };
 		078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */; };
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
+		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		078A9CB020CD1003005C7922 /* ProfessorListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessorListView.swift; sourceTree = "<group>"; };
 		078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessorListViewModel.swift; sourceTree = "<group>"; };
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
+		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */,
+				078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				071C9DF21FD60D7C009E9D60 /* StudentListView.swift in Sources */,
 				071C9DEE1FD60C3D009E9D60 /* StudentListController.swift in Sources */,
 				071C9DEC1FD60A65009E9D60 /* Student.swift in Sources */,
+				078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */,
 				078A9CAA20CD0F0D005C7922 /* Professor.swift in Sources */,
 				078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */,
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,

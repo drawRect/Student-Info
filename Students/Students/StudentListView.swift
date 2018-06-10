@@ -14,7 +14,6 @@ class StudentListView: UIView {
     public let tableView: UITableView = {
         let tv = UITableView(frame: .zero)
         tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
-        tv.tableFooterView = UIView()
         return tv
     }()
 

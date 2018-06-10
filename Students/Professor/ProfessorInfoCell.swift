@@ -17,7 +17,7 @@ class ProfessorInfoCell: UITableViewCell {
 
 extension ProfessorInfoCell {
     func populateCell(with professor: Professor) {
-        self.textLabel?.text = (professor.name + ", " + professor.qualification + ", " + professor.age)
+        self.textLabel?.text = (professor.name + ". " + professor.qualification + ", " + professor.age)
         self.detailTextLabel?.text = professor.address
     }
 }

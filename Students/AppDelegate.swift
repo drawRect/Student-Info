@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    
     private func setRootScene() {
         let studTabBarItem = UITabBarItem(title: "Students", image: #imageLiteral(resourceName: "icStudent"), selectedImage: #imageLiteral(resourceName: "icStudent"))
         let studNC = UINavigationController(studTabBarItem, child: StudentsListController())
