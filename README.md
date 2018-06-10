@@ -1,2 +1,2 @@
 # Student-Info
-Here we are populating Static Student List info in TableView
+Here we are populating Static Students & Professors List info in TableView
