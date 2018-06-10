@@ -41,7 +41,6 @@ struct JSONLoader {
                 throw MockLoaderError.invalidFileURL(url)
             }
         }catch {
-            dump(resource)
             throw MockLoaderError.invalidJSON(resource.name)
         }
     }

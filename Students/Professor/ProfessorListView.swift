@@ -1,5 +1,5 @@
 //
-//  StudentListView.swift
+//  ProfessorListView.swift
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.

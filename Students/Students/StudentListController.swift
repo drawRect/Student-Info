@@ -17,8 +17,8 @@ class StudentsListController: UIViewController {
     override func loadView() {
         super.loadView()
         view = StudentListView(frame: UIScreen.main.bounds)
-        _view.tableView.delegate = self.viewModel
-        _view.tableView.dataSource = self.viewModel
+        _view.tableView.delegate = viewModel
+        _view.tableView.dataSource = viewModel
     }
     override func viewDidLoad() {
         super.viewDidLoad()

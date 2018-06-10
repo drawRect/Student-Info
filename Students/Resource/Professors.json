@@ -1,7 +1,7 @@
 {
     "professors": [
                    {
-                   "name": "Mani",
+                   "name": "John",
                    "age": "27",
                    "color": "Red",
                    "address": "Bangalore",
@@ -9,7 +9,7 @@
                    "qualification": "MCA"
                    },
                    {
-                   "name": "Ravi",
+                   "name": "Bill Gaten",
                    "age": "26",
                    "color": "Black",
                    "address": "Chennai",
@@ -17,7 +17,7 @@
                    "qualification": "MCA"
                    },
                    {
-                   "name": "Revathi",
+                   "name": "Abdul Kalam",
                    "age": "26",
                    "color": "Black",
                    "address": "Delhi",
@@ -33,14 +33,15 @@
                    "qualification": "M.Sc,M.Phil"
                    },
                    {
-                   "name": "Komathi",
+                   "name": "Rakesh",
                    "age": "29",
                    "color": "Red",
                    "address": "Bangalore",
-                   "sex": "Female"
+                   "sex": "Female",
+                   "qualification": "M.E"
                    },
                    {
-                   "name": "Marimuthu",
+                   "name": "Bill",
                    "age": "27",
                    "color": "Red",
                    "address": "Kovai",

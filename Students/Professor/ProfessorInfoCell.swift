@@ -1,5 +1,5 @@
 //
-//  StudentInfoCell.swift
+//  ProfessorInfoCell.swift
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
@@ -17,7 +17,7 @@ class ProfessorInfoCell: UITableViewCell {
 
 extension ProfessorInfoCell {
     func populateCell(with professor: Professor) {
-        self.textLabel?.text = (professor.name + professor.qualification + ", " + ", " + professor.age)
+        self.textLabel?.text = (professor.name + ", " + professor.qualification + ", " + professor.age)
         self.detailTextLabel?.text = professor.address
     }
 }

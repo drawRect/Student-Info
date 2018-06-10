@@ -1,5 +1,5 @@
 //
-//  StudentListViewModel.swift
+//  ProfessorListViewModel.swift
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
