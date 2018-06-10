@@ -8,12 +8,12 @@
 
 import UIKit
 
-class StudentListView: UIView {
+class ProfessorListView: UIView {
 
     //MARK: - iVars
     public let tableView: UITableView = {
         let tv = UITableView(frame: .zero)
-        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
+        tv.register(ProfessorInfoCell.classForCoder(), forCellReuseIdentifier: ProfessorInfoCell.reuseIdentifier)
         tv.tableFooterView = UIView()
         return tv
     }()

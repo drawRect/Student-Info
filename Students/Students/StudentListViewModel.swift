@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class StudentListViewModel: NSObject {
-    var students: Students = Students.init(students:[]) {
+    var students: Students = Students(students:[]) {
         didSet {
             students.students.forEach { (s) in
                 let filteredKeys = mutableSectionValues.keys.filter({k in k==s.sexualType})
@@ -31,7 +31,7 @@ class StudentListViewModel: NSObject {
     func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
         do {
             let resource = Resource<Students>(name: "Students", ext: "json", parse: { (data) -> Students? in
-                try? JSONDecoder().decode(Students.self, from: data)
+                return try? JSONDecoder().decode(Students.self, from: data)
             })
             let students = try JSONLoader.loadMockFile(with: resource, bundle: .main)
             completion(Result.success(students))
