@@ -7,13 +7,11 @@
 //
 
 import UIKit
-//Rules:- Dont expose UIElements as Public
-//If you want, write helper func to get an instance
 class StudentListView: UIView {
     //MARK: - iVars
-    private let tableView: UITableView = {
-        let tv = UITableView.init(frame: CGRect.zero)
-        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier())
+    public let tableView: UITableView = {
+        let tv = UITableView(frame: .zero)
+        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
         tv.tableFooterView = UIView()
         return tv
     }()
@@ -25,9 +23,5 @@ class StudentListView: UIView {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    //MARK: - Public functions
-    public func getTableView()->UITableView {
-        return tableView
     }
 }

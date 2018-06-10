@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct Students:Decodable {
-    let students:[Student]
+struct Resource<A> {
+    let name: String
+    let ext: String
+    let parse: (Data) -> A?
+}
+
+struct Students: Decodable {
+    let students: [Student]
 }
 

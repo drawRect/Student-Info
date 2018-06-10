@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class StudentInfoCell:UITableViewCell {
-    class func reuseIdentifier()->String {
+class StudentInfoCell: UITableViewCell {
+    class var reuseIdentifier: String {
         return "StudentInfoCell"
     }
 }
 
 extension StudentInfoCell {
-    func populateCell(with student:Student) {
+    func populateCell(with student: Student) {
         self.textLabel?.text = (student.name + ", " + student.age)
         self.detailTextLabel?.text = student.address
     }

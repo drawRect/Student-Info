@@ -9,29 +9,23 @@
 import Foundation
 import UIKit
 
-class StudentsListController:UIViewController {
-    private lazy var _view:StudentListView = {return view as! StudentListView}()
-    private let viewModel:StudentListViewModel = {
-        do {
-            let students = try JSONLoader.loadMockFile(named: "Students",bundle: .main)
-            let dataSource = StudentListDataSource.init(students: students)
-            return StudentListViewModel(dataSource: dataSource)
-        } catch let e as MockLoaderError{
-            e.desc()
-        }catch{
-            debugPrint("could not read Mock json file :(")
+class StudentsListController: UIViewController {
+    private lazy var _view: StudentListView = view as! StudentListView
+    private let viewModel: StudentListViewModel = {
+        if let source = StudentListDataSource.getStudentDataSource() {
+            return StudentListViewModel(dataSource: source)
+        }else {
+            let source = StudentListDataSource.init(students: nil)
+            return StudentListViewModel(dataSource: source!)
         }
-        let students = Students.init(students: [])
-        let dataSource = StudentListDataSource.init(students: students)
-        return StudentListViewModel(dataSource: dataSource)
     }()
 
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
-        view = StudentListView.init(frame: UIScreen.main.bounds)
-        _view.getTableView().delegate = self
-        _view.getTableView().dataSource = self
+        view = StudentListView(frame: UIScreen.main.bounds)
+        _view.tableView.delegate = self
+        _view.tableView.dataSource = self
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +41,7 @@ extension StudentsListController:UITableViewDelegate,UITableViewDataSource {
         return viewModel.numberOfRowsIn(section: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = StudentInfoCell.init(style: .subtitle, reuseIdentifier: StudentInfoCell.reuseIdentifier())
+        let cell = StudentInfoCell.init(style: .subtitle, reuseIdentifier: StudentInfoCell.reuseIdentifier)
         let student = viewModel.cellForRowAt(indexPath: indexPath)
         cell.populateCell(with:student)
         return cell

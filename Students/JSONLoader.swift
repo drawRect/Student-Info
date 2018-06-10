@@ -8,31 +8,34 @@
 
 import Foundation
 
-enum MockLoaderError:Error {
+enum MockLoaderError: Error {
     case invalidFileName(String)
     case invalidFileURL(URL)
     case invalidJSON(String)
-    func desc(){
+
+    var localizedDescription: String {
         switch self {
-        case .invalidFileName(let name): debugPrint("\(name) FileName is incorrect")
-        case .invalidFileURL(let url): debugPrint("\(url) FilePath is incorrect")
-        case .invalidJSON(let name): debugPrint("\(name) has Invalid JSON")
+        case .invalidFileName(let name): return "\(name) FileName is incorrect"
+        case .invalidFileURL(let url): return "\(url) FilePath is incorrect"
+        case .invalidJSON(let name): return "\(name) has Invalid JSON"
         }
     }
 }
 
 struct JSONLoader {
-    static func loadMockFile(named fileName:String,bundle:Bundle = .main) throws -> Students {
-        guard let url = bundle.url(forResource: fileName, withExtension: "json") else {throw MockLoaderError.invalidFileName(fileName)}
+    static func loadMockFile<A>(with resource: Resource<A>, bundle: Bundle = .main) throws -> A {
+        guard let url = bundle.url(forResource: resource.name, withExtension: resource.ext)
+            else {
+                throw MockLoaderError.invalidFileName(resource.name) }
         do {
             let data = try Data(contentsOf: url)
-            if let students = try? JSONDecoder().decode(Students.self, from: data) {
-                return students
-            }else {
+            if let result = resource.parse(data) {
+                return result
+            } else {
                 throw MockLoaderError.invalidFileURL(url)
             }
         }catch {
-            throw MockLoaderError.invalidJSON(fileName)
+            throw MockLoaderError.invalidJSON(resource.name)
         }
     }
 }
