@@ -1,5 +1,5 @@
 //
-//  StudentListView.swift
+//  ProfessorListView.swift
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
@@ -7,16 +7,17 @@
 //
 
 import UIKit
-//Rules:- Dont expose UIElements as Public
-//If you want, write helper func to get an instance
-class StudentListView: UIView {
+
+class ProfessorListView: UIView {
+
     //MARK: - iVars
-    private let tableView: UITableView = {
-        let tv = UITableView.init(frame: CGRect.zero)
-        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier())
+    public let tableView: UITableView = {
+        let tv = UITableView(frame: .zero)
+        tv.register(ProfessorInfoCell.classForCoder(), forCellReuseIdentifier: ProfessorInfoCell.reuseIdentifier)
         tv.tableFooterView = UIView()
         return tv
     }()
+
     //MARK: - Overriden functions
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,9 +26,5 @@ class StudentListView: UIView {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    //MARK: - Public functions
-    public func getTableView()->UITableView {
-        return tableView
     }
 }

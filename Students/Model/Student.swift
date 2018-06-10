@@ -8,14 +8,13 @@
 
 import Foundation
 
-enum SexualType: String, Codable {
+enum SexualType: String {
     case Male = "Male"
     case Female = "Female"
     case Other = "Other"
 }
 
-struct Student: Codable {
-    
+struct Student: Decodable {
     let name,age,color,address,sex: String
     var sexualType: SexualType {
         switch self.sex {
@@ -27,12 +26,4 @@ struct Student: Codable {
             return .Other
         }
     }
-    private enum CodingKeys: String, CodingKey {
-        case name
-        case age
-        case color
-        case address
-        case sex
-    }
 }
-
