@@ -27,6 +27,7 @@ class ProfessorListController: UIViewController {
     }
 }
 
+//MARK: - Extension|ProfessorListController
 extension ProfessorListController {
     private func loadDataSource() {
         viewModel.getDataSource(completion: {[weak self] (result) in

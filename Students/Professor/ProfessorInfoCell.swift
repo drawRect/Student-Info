@@ -11,10 +11,11 @@ import UIKit
 
 class ProfessorInfoCell: UITableViewCell {
     class var reuseIdentifier: String {
-        return "ProfessorInfoCell"
+        return String(describing: self)
     }
 }
 
+//MARK: - Extension|ProfessorInfoCell
 extension ProfessorInfoCell {
     func populateCell(with professor: Professor) {
         self.textLabel?.text = (professor.name + ". " + professor.qualification + ", " + professor.age)
