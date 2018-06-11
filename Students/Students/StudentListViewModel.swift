@@ -21,10 +21,8 @@ class StudentListViewModel: NSObject {
 
     func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
         do {
-            let resource = Resource<Students>(name: "Students", ext: "json", parse: { (data) -> Students? in
-                return try? JSONDecoder().decode(Students.self, from: data)
-            })
-            let students = try JSONLoader.loadMockFile(with: resource, bundle: .main)
+            let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
+            let students = try JSONLoader.loadMockFile(resource)
             completion(Result.success(students))
         } catch (let e){
             completion(Result.failure(e))

@@ -13,17 +13,15 @@ class ProfessorListViewModel: NSObject {
     var professors: Professors?
     var sectionedProfessors: [SexualType: [Professor]] {
         if let professors = professors?.professors {
-         return Dictionary(grouping: professors,by:{$0.sexualType})
+            return Dictionary(grouping: professors,by:{$0.sexualType})
         }
         return [:]
     }
     
     func getDataSource(completion: @escaping(_ result: Result<Professors>)->())  {
         do {
-            let resource = Resource<Professors>(name: "Professors", ext: "json", parse: { (data) -> Professors? in
-                return try? JSONDecoder().decode(Professors.self, from: data)
-            })
-            let professors = try JSONLoader.loadMockFile(with: resource, bundle: .main)
+            let resource = Resource(name: Constants.profJSONFileName, A: Professors.self)
+            let professors = try JSONLoader.loadMockFile(resource)
             completion(Result.success(professors))
         } catch (let e){
             completion(Result.failure(e))
