@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-    convenience init(_ tabBarItem: UITabBarItem, child: UIViewController) {
+    convenience init(_ tabBarType: TabBarType, child: UIViewController) {
         self.init()
-        self.tabBarItem = tabBarItem
+        self.tabBarItem = tabBarType.tabBarItem
         self.viewControllers = [child]
     }
 }

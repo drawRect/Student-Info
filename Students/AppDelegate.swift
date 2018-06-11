@@ -25,11 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     private func setRootScene() {
-        let studTabBarItem = UITabBarItem(title: "Students", image: #imageLiteral(resourceName: "icStudent"), selectedImage: #imageLiteral(resourceName: "icStudent"))
-        let studNC = UINavigationController(studTabBarItem, child: StudentsListController())
-
-        let profTabBarItem = UITabBarItem(title: "Professors", image: #imageLiteral(resourceName: "icProfessor"), selectedImage: #imageLiteral(resourceName: "icProfessor"))
-        let profNC = UINavigationController(profTabBarItem, child: ProfessorListController())
+        let studNC = UINavigationController(.students, child: StudentsListController())
+        let profNC = UINavigationController(.professors, child: ProfessorListController())
 
         let tc = UITabBarController()
         tc.viewControllers = [profNC,studNC]
@@ -37,3 +34,18 @@ extension AppDelegate {
         window?.rootViewController = tc
     }
 }
+
+enum TabBarType: String {
+    case professors = "Professors"
+    case students = "Students"
+    
+    var tabBarItem: UITabBarItem {
+        switch self {
+        case .professors:
+            return UITabBarItem(title: TabBarType.professors.rawValue, image: #imageLiteral(resourceName: "icProfessor"), selectedImage: #imageLiteral(resourceName: "icProfessor"))
+        case .students:
+            return UITabBarItem(title: TabBarType.students.rawValue, image: #imageLiteral(resourceName: "icStudent"), selectedImage: #imageLiteral(resourceName: "icStudent"))
+        }
+    }
+}
+
