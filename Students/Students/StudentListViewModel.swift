@@ -10,23 +10,14 @@ import Foundation
 import UIKit
 
 class StudentListViewModel: NSObject {
-    var students: Students = Students(students:[]) {
-        didSet {
-            students.students.forEach { (s) in
-                let filteredKeys = mutableSectionValues.keys.filter({k in k==s.sexualType})
-                if filteredKeys.isEmpty {
-                    mutableSectionValues[s.sexualType] = [s]
-                }else {
-                    var studs = mutableSectionValues[filteredKeys.first!]
-                    studs?.append(s)
-                    mutableSectionValues[s.sexualType] = studs
-                }
-            }
-            sectionedStudents = mutableSectionValues
+    var students: Students?
+    
+    var sectionedStudents: [SexualType: [Student]] {
+        if let students = students?.students {
+            return Dictionary(grouping: students,by:{$0.sexualType})
         }
+        return [:]
     }
-    var sectionedStudents: [SexualType: [Student]] = [:]
-    var mutableSectionValues: [SexualType: [Student]] = [:]
 
     func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
         do {
@@ -41,6 +32,7 @@ class StudentListViewModel: NSObject {
     }
 }
 
+//MARK: - Extension|StudentListViewModel
 extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionedStudents.keys.count

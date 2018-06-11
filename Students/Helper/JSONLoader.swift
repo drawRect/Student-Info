@@ -20,9 +20,9 @@ enum MockLoaderError: Error {
 
     var localizedDescription: String {
         switch self {
-        case .invalidFileName(let name): return "\(name) FileName is incorrect"
-        case .invalidFileURL(let url): return "\(url) FilePath is incorrect"
-        case .invalidJSON(let name): return "\(name) has Invalid JSON"
+        case let .invalidFileName(name): return "\(name) FileName is incorrect"
+        case let .invalidFileURL(url): return "\(url) FilePath is incorrect"
+        case let .invalidJSON(name): return "\(name) has Invalid JSON"
         }
     }
 }

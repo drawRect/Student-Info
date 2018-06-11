@@ -10,24 +10,14 @@ import Foundation
 import UIKit
 
 class ProfessorListViewModel: NSObject {
-    var professors: Professors = Professors(professors:[]) {
-        didSet {
-            professors.professors.forEach { (s) in
-                let filteredKeys = mutableSectionValues.keys.filter({k in k==s.sexualType})
-                if filteredKeys.isEmpty {
-                    mutableSectionValues[s.sexualType] = [s]
-                }else {
-                    var profs = mutableSectionValues[filteredKeys.first!]
-                    profs?.append(s)
-                    mutableSectionValues[s.sexualType] = profs
-                }
-            }
-            sectionedProfessors = mutableSectionValues
+    var professors: Professors?
+    var sectionedProfessors: [SexualType: [Professor]] {
+        if let professors = professors?.professors {
+         return Dictionary(grouping: professors,by:{$0.sexualType})
         }
+        return [:]
     }
-    var sectionedProfessors: [SexualType: [Professor]] = [:]
-    var mutableSectionValues: [SexualType: [Professor]] = [:]
-
+    
     func getDataSource(completion: @escaping(_ result: Result<Professors>)->())  {
         do {
             let resource = Resource<Professors>(name: "Professors", ext: "json", parse: { (data) -> Professors? in
@@ -41,6 +31,7 @@ class ProfessorListViewModel: NSObject {
     }
 }
 
+//MARK: - Extension|ProfessorListViewModel
 extension ProfessorListViewModel: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionedProfessors.keys.count
