@@ -51,4 +51,9 @@ extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Array(sectionedStudents.keys)[section].rawValue
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = Constants.headerColor
+    }
 }

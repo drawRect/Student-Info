@@ -3,49 +3,42 @@
                  {
                  "name": "Mani",
                  "age": "27",
-                 "color": "Red",
                  "address": "Bangalore",
                  "sex": "Male"
                  },
                  {
                  "name": "Ravi",
                  "age": "26",
-                 "color": "Black",
                  "address": "Chennai",
                  "sex": "Male"
                  },
                  {
                  "name": "Revathi",
                  "age": "26",
-                 "color": "Black",
                  "address": "Delhi",
                  "sex": "Female"
                  },
                  {
                  "name": "Jobs",
                  "age": "24",
-                 "color": "Red",
                  "address": "Bangalore",
                  "sex": "Male"
                  },
                  {
                  "name": "Komathi",
                  "age": "29",
-                 "color": "Red",
                  "address": "Bangalore",
                  "sex": "Female"
                  },
                  {
                  "name": "Marimuthu",
                  "age": "27",
-                 "color": "Red",
                  "address": "Kovai",
                  "sex": "Male"
                  },
                  {
                  "name": "Kumar",
                  "age": "24",
-                 "color": "Black",
                  "address": "Delhi",
                  "sex": "Male"
                  }

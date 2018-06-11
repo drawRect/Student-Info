@@ -32,14 +32,14 @@ extension StudentsListController {
     private func loadDataSource() {
         viewModel.getDataSource(completion: {[weak self] (result) in
             switch result {
-            case .success(let s):
+            case let .success(s):
                 DispatchQueue.main.async {
                     self?.viewModel.students = s
                     self?._view.tableView.tableFooterView = UILabel("\(s.students.count) Students")
                     self?._view.tableView.reloadData()
                 }
-            case .failure(let r):
-                debugPrint(r.localizedDescription)
+            case let .failure(e):
+                debugPrint(e.localizedDescription)
             }
         })
     }

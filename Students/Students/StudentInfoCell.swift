@@ -19,6 +19,8 @@ class StudentInfoCell: UITableViewCell {
 extension StudentInfoCell {
     func populateCell(with student: Student) {
         self.textLabel?.text = (student.name + ", " + student.age)
+        self.textLabel?.textColor = Constants.titleColor
         self.detailTextLabel?.text = student.address
+        self.detailTextLabel?.textColor = Constants.titleColor
     }
 }

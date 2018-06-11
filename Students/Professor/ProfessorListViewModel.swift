@@ -50,4 +50,9 @@ extension ProfessorListViewModel: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Array(sectionedProfessors.keys)[section].rawValue
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = Constants.headerColor
+    }
 }

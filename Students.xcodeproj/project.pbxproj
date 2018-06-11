@@ -28,6 +28,8 @@
 		078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */; };
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
+		C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
+		C67DF52A20CEA26400748A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessorListViewModel.swift; sourceTree = "<group>"; };
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
+		C67DF52620CE70E300748A15 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		C67DF52920CEA26400748A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				078A9C9F20CBFE72005C7922 /* JSONLoader.swift */,
+				C67DF52920CEA26400748A15 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */,
 				078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */,
+				C67DF52620CE70E300748A15 /* UIColor+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -187,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Dash;
 				TargetAttributes = {
 					071C9DD31FD5E892009E9D60 = {
@@ -234,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078A9CB420CD1003005C7922 /* ProfessorListView.swift in Sources */,
+				C67DF52A20CEA26400748A15 /* Constants.swift in Sources */,
 				078A9CA820CD0F03005C7922 /* Professors.swift in Sources */,
 				078A9CB320CD1003005C7922 /* ProfessorInfoCell.swift in Sources */,
 				071C9DD81FD5E892009E9D60 /* AppDelegate.swift in Sources */,
@@ -250,6 +257,7 @@
 				078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */,
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,
 				071C9DEA1FD60A4B009E9D60 /* Students.swift in Sources */,
+				C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +289,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -288,6 +297,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -315,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -338,6 +348,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -345,6 +356,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -366,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

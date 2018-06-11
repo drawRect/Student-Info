@@ -15,7 +15,7 @@ enum SexualType: String {
 }
 
 struct Student: Decodable {
-    let name,age,color,address,sex: String
+    let name,age,address,sex: String
     var sexualType: SexualType {
         switch self.sex {
         case SexualType.Male.rawValue:

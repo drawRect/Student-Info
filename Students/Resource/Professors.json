@@ -3,7 +3,6 @@
                    {
                    "name": "John",
                    "age": "27",
-                   "color": "Red",
                    "address": "Bangalore",
                    "sex": "Male",
                    "qualification": "MCA"
@@ -11,15 +10,13 @@
                    {
                    "name": "Bill Gaten",
                    "age": "26",
-                   "color": "Black",
                    "address": "Chennai",
                    "sex": "Male",
                    "qualification": "MCA"
                    },
                    {
-                   "name": "Abdul Kalam",
+                   "name": "Nisha",
                    "age": "26",
-                   "color": "Black",
                    "address": "Delhi",
                    "sex": "Female",
                    "qualification": "MA"
@@ -27,15 +24,13 @@
                    {
                    "name": "Jobs",
                    "age": "24",
-                   "color": "Red",
                    "address": "Bangalore",
                    "sex": "Male",
                    "qualification": "M.Sc M.Phil"
                    },
                    {
-                   "name": "Rakesh",
+                   "name": "Revathi",
                    "age": "29",
-                   "color": "Red",
                    "address": "Bangalore",
                    "sex": "Female",
                    "qualification": "M.E"
@@ -43,7 +38,6 @@
                    {
                    "name": "Bill",
                    "age": "27",
-                   "color": "Red",
                    "address": "Kovai",
                    "sex": "Male",
                    "qualification": "M.Ed"

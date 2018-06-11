@@ -9,7 +9,7 @@
 import Foundation
 
 struct Professor: Decodable {
-    let name,age,color,address,sex,qualification: String
+    let name,age,address,sex,qualification: String
     var sexualType: SexualType {
         switch self.sex {
         case SexualType.Male.rawValue:
