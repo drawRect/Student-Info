@@ -10,6 +10,6 @@ import Foundation
 
 struct Resource<A> {
     let name: String
-    let ext: String = "json"
+    //let ext: String = "json"
     let A: A.Type
 }

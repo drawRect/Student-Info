@@ -29,7 +29,7 @@ enum MockLoaderError: Error {
 
 struct JSONLoader {
     static func loadMockFile<A: Decodable>(_ resource: Resource<A>, bundle: Bundle = .main) throws -> A {
-        guard let url = bundle.url(forResource: resource.name, withExtension: resource.ext)
+        guard let url = bundle.url(forResource: resource.name, withExtension: nil), url.pathExtension == "json"
             else {
                 throw MockLoaderError.invalidFileName(resource.name)
         }

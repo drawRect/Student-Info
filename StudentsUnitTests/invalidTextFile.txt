@@ -1,0 +1,18 @@
+
+ {
+      "professors": [
+                   {
+                   "name": "John",
+                   "age": "27",
+                   "address": "Bangalore",
+                   "sex": "Male",
+                   "qualification": "MCA"
+                   },
+                   {
+                   "name": "Bill Gaten",
+                   "age": "26",
+                   "address": "Chennai",
+                   "sex": "Male",
+                   "qualification": "MCA"
+                   }
+}
