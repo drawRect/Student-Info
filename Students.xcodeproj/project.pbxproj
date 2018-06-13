@@ -33,16 +33,7 @@
 		D6CAF19220CFEB130032A10E /* JsonLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CAF19120CFEB130032A10E /* JsonLoaderTests.swift */; };
 		D6CAF19920CFF1EC0032A10E /* invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = D6CAF19720CFF1EC0032A10E /* invalid.json */; };
 		D6CAF19A20CFF1EC0032A10E /* invalidTextFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = D6CAF19820CFF1EC0032A10E /* invalidTextFile.txt */; };
-		D6CAF19B20CFF1FB0032A10E /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9C9F20CBFE72005C7922 /* JSONLoader.swift */; };
-		D6CAF19C20CFF2170032A10E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CAB20CD0F2D005C7922 /* Resource.swift */; };
-		D6CAF19D20CFF9FA0032A10E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
-		D6CAF19E20CFFA590032A10E /* Students.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DE91FD60A4B009E9D60 /* Students.swift */; };
-		D6CAF19F20CFFA650032A10E /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DEB1FD60A65009E9D60 /* Student.swift */; };
-		D6CAF1A020CFFA6A0032A10E /* Professors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CA720CD0F03005C7922 /* Professors.swift */; };
-		D6CAF1A120CFFA6D0032A10E /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CA920CD0F0D005C7922 /* Professor.swift */; };
-		D6CAF1A320CFFB5E0032A10E /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
 		D6CAF1A720D000DA0032A10E /* Students.json in Resources */ = {isa = PBXBuildFile; fileRef = D6CAF1A620D000DA0032A10E /* Students.json */; };
-		D6CAF1A820D000EE0032A10E /* Students.json in Resources */ = {isa = PBXBuildFile; fileRef = D6CAF1A620D000DA0032A10E /* Students.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -360,7 +351,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CAF1A820D000EE0032A10E /* Students.json in Resources */,
 				D6CAF19A20CFF1EC0032A10E /* invalidTextFile.txt in Resources */,
 				D6CAF19920CFF1EC0032A10E /* invalid.json in Resources */,
 			);
@@ -406,15 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CAF19D20CFF9FA0032A10E /* Constants.swift in Sources */,
-				D6CAF1A320CFFB5E0032A10E /* UIColor+Additions.swift in Sources */,
-				D6CAF1A120CFFA6D0032A10E /* Professor.swift in Sources */,
-				D6CAF1A020CFFA6A0032A10E /* Professors.swift in Sources */,
 				D6CAF19220CFEB130032A10E /* JsonLoaderTests.swift in Sources */,
-				D6CAF19C20CFF2170032A10E /* Resource.swift in Sources */,
-				D6CAF19E20CFFA590032A10E /* Students.swift in Sources */,
-				D6CAF19F20CFFA650032A10E /* Student.swift in Sources */,
-				D6CAF19B20CFF1FB0032A10E /* JSONLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
