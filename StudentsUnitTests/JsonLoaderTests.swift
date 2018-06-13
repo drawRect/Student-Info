@@ -15,7 +15,7 @@ class JsonLoaderTests: XCTestCase {
         let b = Bundle(for: type(of: self))
         return b
     }()
-    private let invalidJSONFileName = "invalid.json"
+    private let invalidJSONFile = "invalid.json"
     private let invalidFile = "invalidTextFile.txt"
     
     override func setUp() {
@@ -35,12 +35,12 @@ class JsonLoaderTests: XCTestCase {
     }
     
     func testJSONLoaderForInvalidJSON() {
-        let resource = Resource(name: invalidJSONFileName, A: Professors.self)
+        let resource = Resource(name: invalidJSONFile, A: Professors.self)
         do {
             let _ = try JSONLoader.loadMockFile(resource, bundle: bundle)
         }catch let error {
             if let e = error as? MockLoaderError {
-                XCTAssertEqual(e.localizedDescription, "\(invalidJSONFileName) has Invalid JSON")
+                XCTAssertEqual(e.localizedDescription, "File has Invalid JSON")
             }
         }
     }
@@ -51,7 +51,18 @@ class JsonLoaderTests: XCTestCase {
             let _ = try JSONLoader.loadMockFile(resource, bundle: bundle)
         }catch let error {
             if let e = error as? MockLoaderError {
-                XCTAssertEqual(e.localizedDescription, "\(invalidFile) FileName is incorrect")
+                XCTAssertEqual(e.localizedDescription, "FileName is incorrect")
+            }
+        }
+    }
+    
+    func testJSONLoaderForInvalidFileURL() {
+        let resource = Resource(name: Constants.profJSONFileName, A: Students.self)
+        do {
+            let _ = try JSONLoader.loadMockFile(resource)
+        }catch let error {
+            if let e = error as? MockLoaderError {
+                XCTAssertEqual(e.localizedDescription, "FilePath is incorrect")
             }
         }
     }

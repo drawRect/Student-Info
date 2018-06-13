@@ -20,9 +20,9 @@ enum MockLoaderError: Error {
 
     var localizedDescription: String {
         switch self {
-        case let .invalidFileName(name): return "\(name) FileName is incorrect"
-        case let .invalidFileURL(url): return "\(url) FilePath is incorrect"
-        case let .invalidJSON(name): return "\(name) has Invalid JSON"
+        case .invalidFileName(_): return "FileName is incorrect"
+        case .invalidFileURL(_): return "FilePath is incorrect"
+        case .invalidJSON(_): return "File has Invalid JSON"
         }
     }
 }
@@ -33,15 +33,20 @@ struct JSONLoader {
             else {
                 throw MockLoaderError.invalidFileName(resource.name)
         }
-        do {
-            let data = try Data(contentsOf: url)
-            if let model = try? JSONDecoder().decode(A.self, from: data) {
-                return model
-            } else {
-                throw MockLoaderError.invalidFileURL(url)
+        if let data = try? Data(contentsOf: url) {
+            
+            if JSONSerialization.isValidJSONObject(try JSONSerialization.jsonObject(with: data, options: .allowFragments)) {
+                if let model = try? JSONDecoder().decode(A.self, from: data) {
+                    return model
+                }else {
+                    throw MockLoaderError.invalidFileURL(url)
+                }
+            }else {
+                throw MockLoaderError.invalidJSON(resource.name)
             }
-        }catch {
-            throw MockLoaderError.invalidJSON(resource.name)
+            
+        }else {
+            throw MockLoaderError.invalidFileURL(url)
         }
     }
 }

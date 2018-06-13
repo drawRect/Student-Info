@@ -11,4 +11,3 @@ import Foundation
 struct Students: Decodable {
     let students: [Student]
 }
-
