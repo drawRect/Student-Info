@@ -33,20 +33,17 @@ struct JSONLoader {
             else {
                 throw MockLoaderError.invalidFileName(resource.name)
         }
-        if let data = try? Data(contentsOf: url) {
-            
-            if JSONSerialization.isValidJSONObject(try JSONSerialization.jsonObject(with: data, options: .allowFragments)) {
-                if let model = try? JSONDecoder().decode(A.self, from: data) {
-                    return model
-                }else {
-                    throw MockLoaderError.invalidFileURL(url)
-                }
-            }else {
-                throw MockLoaderError.invalidJSON(resource.name)
+        
+        guard let data = try? Data(contentsOf: url) else { throw MockLoaderError.invalidFileURL(url) }
+        let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        
+        if JSONSerialization.isValidJSONObject(jsonData) {
+            guard let model = try? JSONDecoder().decode(A.self, from: data) else {
+                throw MockLoaderError.invalidFileURL(url)
             }
-            
-        }else {
-            throw MockLoaderError.invalidFileURL(url)
+            return model
+        } else {
+            throw MockLoaderError.invalidJSON(resource.name)
         }
     }
 }
