@@ -12,7 +12,8 @@ import UIKit
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
 //    private let viewModel: StudentListViewModel = StudentListViewModel()
-    private var tableDataSource: GenericTableDataSource<StudentInfoCell, StudentListViewModel>?
+//    private var tableDataSource: GenericTableDataSource<StudentInfoCell, StudentListViewModel>?
+    private var tableDataSource: GenericTableDataSource<StudentInfoCell,StudentListViewModel,StudentListViewModel>?
 
     //MARK: - Overridden functions
     override func loadView() {
@@ -35,6 +36,8 @@ extension StudentsListController {
             cell.configure(viewModel: model)
             return cell
         }
+        tableDataSource?.viewModel = StudentListViewModel.init(student: models.students.first!)
+        
         _view.tableView.dataSource = tableDataSource
         _view.tableView.reloadData()
     }

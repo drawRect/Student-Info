@@ -61,8 +61,4 @@ extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-extension StudentListViewModel: GenericTableDataSource<StudentInfoCell,StudentListViewModel> {
-    
-    
-}
 
