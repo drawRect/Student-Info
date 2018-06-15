@@ -11,6 +11,11 @@ import UIKit
 
 class StudentListViewModel: NSObject {
     var students: Students?
+    let student: Student
+    
+    init(student: Student) {
+        self.student = student
+    }
     
     var sectionedStudents: [SexualType: [Student]] {
         if let students = students?.students {
@@ -19,7 +24,7 @@ class StudentListViewModel: NSObject {
         return [:]
     }
 
-    func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
+    class func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
         do {
             let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
             let students = try JSONLoader.loadMockFile(resource)
@@ -55,3 +60,9 @@ extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
         header.textLabel?.textColor = Constants.headerColor
     }
 }
+
+extension StudentListViewModel: GenericTableDataSource<StudentInfoCell,StudentListViewModel> {
+    
+    
+}
+

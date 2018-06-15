@@ -24,3 +24,12 @@ extension StudentInfoCell {
         self.detailTextLabel?.textColor = Constants.titleColor
     }
 }
+
+extension StudentInfoCell {
+    func configure(viewModel: StudentListViewModel) {
+        self.textLabel?.text = (viewModel.student.name + ", " + viewModel.student.age)
+        self.textLabel?.textColor = Constants.titleColor
+        self.detailTextLabel?.text = viewModel.student.address
+        self.detailTextLabel?.textColor = Constants.titleColor
+    }
+}
