@@ -208,7 +208,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = Dash;
+				ORGANIZATIONNAME = DrawRect;
 				TargetAttributes = {
 					071C9DD31FD5E892009E9D60 = {
 						CreatedOnToolsVersion = 9.1;
