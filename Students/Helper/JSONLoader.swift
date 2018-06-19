@@ -13,6 +13,26 @@ enum Result<Value> {
     case failure(Error)
 }
 
+
+extension Result where Value == Data {
+    func decoded<T: Decodable>() throws -> T {
+        let decoder = JSONDecoder()
+        let data = try resolve()
+        return try decoder.decode(T.self, from: data)
+    }
+}
+
+extension Result {
+    func resolve() throws -> Value {
+        switch self {
+        case .success(let value):
+            return value
+        case .failure(let error):
+            throw error
+        }
+    }
+}
+
 enum MockLoaderError: Error {
     case invalidFileName(String)
     case invalidFileURL(URL)
@@ -44,4 +64,17 @@ struct JSONLoader {
             throw MockLoaderError.invalidJSON(resource.name)
         }
     }
+    
+    static func _loadMockFile(_ fileName: String, bundle: Bundle = .main, completionHandler: @escaping (_ result:Result<Data>)->Void) {
+        guard let url = bundle.url(forResource: fileName, withExtension: "json")
+            else {
+                return print("Could not load the JSON File :(")
+        }
+        if let data = try? Data(contentsOf: url) {
+            completionHandler(Result.success(data))
+        }else {
+            
+        }
+    }
 }
+

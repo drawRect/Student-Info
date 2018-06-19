@@ -18,7 +18,7 @@ class StudentListViewModel: NSObject {
         }
         return [:]
     }
-
+    
     func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
         do {
             let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
