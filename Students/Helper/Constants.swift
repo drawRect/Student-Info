@@ -3,7 +3,7 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 6/11/18.
-//  Copyright © 2018 Dash. All rights reserved.
+//  Copyright © 2018 DrawRect. All rights reserved.
 //
 
 import Foundation
