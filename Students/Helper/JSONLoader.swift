@@ -3,7 +3,7 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 6/9/18.
-//  Copyright © 2018 Dash. All rights reserved.
+//  Copyright © 2018 DrawRect. All rights reserved.
 //
 
 import Foundation
@@ -20,27 +20,29 @@ enum MockLoaderError: Error {
 
     var localizedDescription: String {
         switch self {
-        case let .invalidFileName(name): return "\(name) FileName is incorrect"
-        case let .invalidFileURL(url): return "\(url) FilePath is incorrect"
-        case let .invalidJSON(name): return "\(name) has Invalid JSON"
+        case .invalidFileName(_): return "FileName is incorrect"
+        case .invalidFileURL(_): return "FilePath is incorrect"
+        case .invalidJSON(_): return "File has Invalid JSON"
         }
     }
 }
 
 struct JSONLoader {
     static func loadMockFile<A: Decodable>(_ resource: Resource<A>, bundle: Bundle = .main) throws -> A {
-        guard let url = bundle.url(forResource: resource.name, withExtension: resource.ext)
+        guard let url = bundle.url(forResource: resource.name, withExtension: nil), url.pathExtension == "json"
             else {
                 throw MockLoaderError.invalidFileName(resource.name)
         }
-        do {
-            let data = try Data(contentsOf: url)
-            if let model = try? JSONDecoder().decode(A.self, from: data) {
-                return model
-            } else {
+        
+        guard let data = try? Data(contentsOf: url) else { throw MockLoaderError.invalidFileURL(url) }
+        let jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        
+        if JSONSerialization.isValidJSONObject(jsonData) {
+            guard let model = try? JSONDecoder().decode(A.self, from: data) else {
                 throw MockLoaderError.invalidFileURL(url)
             }
-        }catch {
+            return model
+        } else {
             throw MockLoaderError.invalidJSON(resource.name)
         }
     }

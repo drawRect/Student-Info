@@ -3,7 +3,7 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
-//  Copyright © 2017 Dash. All rights reserved.
+//  Copyright © 2017 DrawRect. All rights reserved.
 //
 
 import Foundation
@@ -11,14 +11,12 @@ import UIKit
 
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
-    private let viewModel: StudentListViewModel = StudentListViewModel()
+    private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
 
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
         view = StudentListView(frame: UIScreen.main.bounds)
-        _view.tableView.delegate = viewModel
-        _view.tableView.dataSource = viewModel
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +27,24 @@ class StudentsListController: UIViewController {
 
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
+    private func setUpDataSource(with models: Students) {
+        let viewModel = StudentListViewModel()
+        viewModel.students = models
+        tableDataSource = TableViewHelper(source: viewModel) {cell,model in
+            cell.configureCell(model: model)
+            return cell
+        }
+        _view.tableView.tableFooterView = UILabel("\(models.students.count) Students")
+        _view.tableView.dataSource = tableDataSource
+        _view.tableView.delegate = viewModel
+        _view.tableView.reloadData()
+    }
     private func loadDataSource() {
-        viewModel.getDataSource(completion: {[weak self] (result) in
+        StudentListViewModel.getDataSource(completion: {[weak self] (result) in
             switch result {
             case let .success(s):
                 DispatchQueue.main.async {
-                    self?.viewModel.students = s
-                    self?._view.tableView.tableFooterView = UILabel("\(s.students.count) Students")
-                    self?._view.tableView.reloadData()
+                    self?.setUpDataSource(with: s)
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
