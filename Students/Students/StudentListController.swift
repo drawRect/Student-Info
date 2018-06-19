@@ -11,16 +11,12 @@ import UIKit
 
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
-//    private let viewModel: StudentListViewModel = StudentListViewModel()
-//    private var tableDataSource: GenericTableDataSource<StudentInfoCell, StudentListViewModel>?
-    private var tableDataSource: GenericTableDataSource<StudentInfoCell,StudentListViewModel,StudentListViewModel>?
+    private var tableDataSource: GenericTableDataSource<StudentListViewModel,StudentInfoCell,Student>?
 
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
         view = StudentListView(frame: UIScreen.main.bounds)
-//        _view.tableView.delegate = viewModel
-//        _view.tableView.dataSource = viewModel
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +28,15 @@ class StudentsListController: UIViewController {
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
     private func setUpDataSource(with models: Students) {
-        tableDataSource = GenericTableDataSource(models: models.students.map { StudentListViewModel(student: $0) }) { cell, model in
-            cell.configure(viewModel: model)
+        let viewModel = StudentListViewModel()
+        viewModel.students = models
+        tableDataSource = GenericTableDataSource(source: viewModel) {cell,model in
+            cell.configureCell(model: model)
             return cell
         }
-        tableDataSource?.viewModel = StudentListViewModel.init(student: models.students.first!)
-        
+        _view.tableView.tableFooterView = UILabel("\(models.students.count) Students")
         _view.tableView.dataSource = tableDataSource
+        _view.tableView.delegate = tableDataSource
         _view.tableView.reloadData()
     }
     private func loadDataSource() {
@@ -47,9 +45,6 @@ extension StudentsListController {
             case let .success(s):
                 DispatchQueue.main.async {
                     self?.setUpDataSource(with: s)
-//                    self?.viewModel.students = s
-                    self?._view.tableView.tableFooterView = UILabel("\(s.students.count) Students")
-//                    self?._view.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)

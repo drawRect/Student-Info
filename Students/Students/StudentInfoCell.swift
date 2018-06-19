@@ -9,27 +9,15 @@
 import Foundation
 import UIKit
 
-class StudentInfoCell: UITableViewCell {
-    class var reuseIdentifier: String {
-        return String(describing: self)
-    }
-}
+class StudentInfoCell: UITableViewCell {}
+
 
 //MARK: - Extension|StudentInfoCell
 extension StudentInfoCell {
-    func populateCell(with student: Student) {
-        self.textLabel?.text = (student.name + ", " + student.age)
+    func configureCell(model: Student) {
+        self.textLabel?.text = (model.name + ", " + model.age)
         self.textLabel?.textColor = Constants.titleColor
-        self.detailTextLabel?.text = student.address
-        self.detailTextLabel?.textColor = Constants.titleColor
-    }
-}
-
-extension StudentInfoCell {
-    func configure(viewModel: StudentListViewModel) {
-        self.textLabel?.text = (viewModel.student.name + ", " + viewModel.student.age)
-        self.textLabel?.textColor = Constants.titleColor
-        self.detailTextLabel?.text = viewModel.student.address
+        self.detailTextLabel?.text = model.address
         self.detailTextLabel?.textColor = Constants.titleColor
     }
 }

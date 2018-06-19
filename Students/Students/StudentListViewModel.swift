@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class StudentListViewModel: NSObject {
+
+    //Todo:Refinement required
+    typealias T = Student
+    var models: [Student] = []
+
     var students: Students?
-    let student: Student
-    
-    init(student: Student) {
-        self.student = student
-    }
-    
     var sectionedStudents: [SexualType: [Student]] {
         if let students = students?.students {
             return Dictionary(grouping: students,by:{$0.sexualType})
@@ -24,7 +23,7 @@ class StudentListViewModel: NSObject {
         return [:]
     }
 
-    class func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
+    class func getDataSource(completion: @escaping(_ result: Result<Students>)->()) {
         do {
             let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
             let students = try JSONLoader.loadMockFile(resource)
@@ -35,30 +34,25 @@ class StudentListViewModel: NSObject {
     }
 }
 
-//MARK: - Extension|StudentListViewModel
-extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension StudentListViewModel: TableViewDataSource {
+    func numberOfSections() -> Int {
         return sectionedStudents.keys.count
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfRows(in section: Int) -> Int {
         let sexuality = Array(sectionedStudents.keys)[section]
         return sectionedStudents[sexuality]?.count ?? 0
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = StudentInfoCell(style: .subtitle, reuseIdentifier: StudentInfoCell.reuseIdentifier)
+    func cellForRow(at indexPath: IndexPath) -> T {
         let sexuality = Array(sectionedStudents.keys)[indexPath.section]
         let student = (sectionedStudents[sexuality]?[indexPath.row])!
-        cell.populateCell(with:student)
-        return cell
+        return student
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func titleForHeader(in section: Int) -> String? {
         return Array(sectionedStudents.keys)[section].rawValue
     }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+    //Todo:Refinement required
+    func willDisplayHeaderView(view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = Constants.headerColor
     }
 }
-
-
