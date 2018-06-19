@@ -11,7 +11,6 @@ import UIKit
 
 class StudentInfoCell: UITableViewCell {}
 
-
 //MARK: - Extension|StudentInfoCell
 extension StudentInfoCell {
     func configureCell(model: Student) {

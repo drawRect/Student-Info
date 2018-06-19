@@ -11,10 +11,6 @@ import UIKit
 
 class StudentListViewModel: NSObject {
 
-    //Todo:Refinement required
-    typealias T = Student
-    var models: [Student] = []
-
     var students: Students?
     var sectionedStudents: [SexualType: [Student]] {
         if let students = students?.students {
@@ -34,7 +30,12 @@ class StudentListViewModel: NSObject {
     }
 }
 
-extension StudentListViewModel: TableViewDataSource {
+extension StudentListViewModel: TVDataSourceConfigurable {
+    typealias T = Student
+    var array: [Student] {
+        return students?.students ?? []
+    }
+
     func numberOfSections() -> Int {
         return sectionedStudents.keys.count
     }
@@ -47,11 +48,15 @@ extension StudentListViewModel: TableViewDataSource {
         let student = (sectionedStudents[sexuality]?[indexPath.row])!
         return student
     }
+
     func titleForHeader(in section: Int) -> String? {
         return Array(sectionedStudents.keys)[section].rawValue
     }
-    //Todo:Refinement required
-    func willDisplayHeaderView(view: UIView, forSection section: Int) {
+}
+
+extension StudentListViewModel: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = Constants.headerColor
     }

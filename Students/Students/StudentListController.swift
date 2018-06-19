@@ -11,7 +11,7 @@ import UIKit
 
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
-    private var tableDataSource: GenericTableDataSource<StudentListViewModel,StudentInfoCell,Student>?
+    private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
 
     //MARK: - Overridden functions
     override func loadView() {
@@ -30,13 +30,13 @@ extension StudentsListController {
     private func setUpDataSource(with models: Students) {
         let viewModel = StudentListViewModel()
         viewModel.students = models
-        tableDataSource = GenericTableDataSource(source: viewModel) {cell,model in
+        tableDataSource = TableViewHelper(source: viewModel) {cell,model in
             cell.configureCell(model: model)
             return cell
         }
         _view.tableView.tableFooterView = UILabel("\(models.students.count) Students")
         _view.tableView.dataSource = tableDataSource
-        _view.tableView.delegate = tableDataSource
+        _view.tableView.delegate = viewModel
         _view.tableView.reloadData()
     }
     private func loadDataSource() {

@@ -28,9 +28,10 @@
 		078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */; };
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
+		07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */; };
 		C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
 		C67DF52A20CEA26400748A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
-		C6F543A220D3C7E00015AC74 /* GenericTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F543A020D3C7E00015AC74 /* GenericTableDataSource.swift */; };
+		C6F543A220D3C7E00015AC74 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F543A020D3C7E00015AC74 /* TableViewHelper.swift */; };
 		C6F543A320D3C7E00015AC74 /* Resuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F543A120D3C7E00015AC74 /* Resuable.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,9 +59,10 @@
 		078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessorListViewModel.swift; sourceTree = "<group>"; };
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
+		07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDataSourceConfigurable.swift; sourceTree = "<group>"; };
 		C67DF52620CE70E300748A15 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		C67DF52920CEA26400748A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C6F543A020D3C7E00015AC74 /* GenericTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableDataSource.swift; sourceTree = "<group>"; };
+		C6F543A020D3C7E00015AC74 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		C6F543A120D3C7E00015AC74 /* Resuable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resuable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				071C9DD71FD5E892009E9D60 /* AppDelegate.swift */,
-				C6F5439F20D3C7B30015AC74 /* GenericTableView */,
+				C6F5439F20D3C7B30015AC74 /* TableViewHelper */,
 				078A9CA120CD043C005C7922 /* Students */,
 				078A9CAD20CD1003005C7922 /* Professor */,
 				078A9CB620CD1D04005C7922 /* Extension */,
@@ -171,13 +173,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		C6F5439F20D3C7B30015AC74 /* GenericTableView */ = {
+		C6F5439F20D3C7B30015AC74 /* TableViewHelper */ = {
 			isa = PBXGroup;
 			children = (
-				C6F543A020D3C7E00015AC74 /* GenericTableDataSource.swift */,
+				C6F543A020D3C7E00015AC74 /* TableViewHelper.swift */,
+				07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */,
 				C6F543A120D3C7E00015AC74 /* Resuable.swift */,
 			);
-			path = GenericTableView;
+			path = TableViewHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +268,7 @@
 				078A9CB220CD1003005C7922 /* ProfessorListController.swift in Sources */,
 				071C9DF21FD60D7C009E9D60 /* StudentListView.swift in Sources */,
 				071C9DEE1FD60C3D009E9D60 /* StudentListController.swift in Sources */,
+				07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */,
 				071C9DEC1FD60A65009E9D60 /* Student.swift in Sources */,
 				078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */,
 				078A9CAA20CD0F0D005C7922 /* Professor.swift in Sources */,
@@ -273,7 +277,7 @@
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,
 				071C9DEA1FD60A4B009E9D60 /* Students.swift in Sources */,
 				C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */,
-				C6F543A220D3C7E00015AC74 /* GenericTableDataSource.swift in Sources */,
+				C6F543A220D3C7E00015AC74 /* TableViewHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
