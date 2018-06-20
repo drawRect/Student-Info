@@ -101,25 +101,28 @@ class LoginViewController : UIViewController {
     }
     
     private func setUpConstraints() {
-        let layoutGuide = view.safeAreaLayoutGuide
-        
-        NSLayoutConstraint.activate([
-            self.userNameField.leftAnchor.constraint(equalTo: layoutGuide.leftAnchor, constant: 20),
-            self.userNameField.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 44),
-            self.userNameField.rightAnchor.constraint(equalTo: layoutGuide.rightAnchor, constant: -20),
-            self.userNameField.bottomAnchor.constraint(equalTo: self.passwordField.topAnchor, constant: -20)
-            ])
-        NSLayoutConstraint.activate([
-            self.passwordField.leftAnchor.constraint(equalTo: self.userNameField.leftAnchor),
-            self.passwordField.rightAnchor.constraint(equalTo: self.userNameField.rightAnchor),
-            self.passwordField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: 20),
-            self.passwordField.bottomAnchor.constraint(equalTo: self.submitButton.topAnchor, constant: -20),
-            ])
-        NSLayoutConstraint.activate([
-            self.submitButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80),
-            self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 20),
-            self.submitButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80),
-            self.submitButton.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor, constant: 20)
-            ])
+        if #available(iOS 11.0, *) {
+            let layoutGuide = view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                self.userNameField.leftAnchor.constraint(equalTo: layoutGuide.leftAnchor, constant: 20),
+                self.userNameField.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 44),
+                self.userNameField.rightAnchor.constraint(equalTo: layoutGuide.rightAnchor, constant: -20),
+                self.userNameField.bottomAnchor.constraint(equalTo: self.passwordField.topAnchor, constant: -20)
+                ])
+            NSLayoutConstraint.activate([
+                self.passwordField.leftAnchor.constraint(equalTo: self.userNameField.leftAnchor),
+                self.passwordField.rightAnchor.constraint(equalTo: self.userNameField.rightAnchor),
+                self.passwordField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: 20),
+                self.passwordField.bottomAnchor.constraint(equalTo: self.submitButton.topAnchor, constant: -20),
+                ])
+            NSLayoutConstraint.activate([
+                self.submitButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80),
+                self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 20),
+                self.submitButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80),
+                self.submitButton.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor, constant: 20)
+                ])
+        } else {
+            // Fallback on earlier versions
+        }   
     }
 }
