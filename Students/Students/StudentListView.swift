@@ -12,8 +12,8 @@ class StudentListView: UIView {
 
     //MARK: - iVars
     public let tableView: UITableView = {
-        let tv = UITableView(frame: .zero)
-        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
+        let tv = UITableView()
+        tv.register(StudentInfoCell.self, forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()

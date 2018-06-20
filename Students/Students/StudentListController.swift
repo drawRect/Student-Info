@@ -12,7 +12,7 @@ import UIKit
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
     private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
-
+    
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
@@ -27,28 +27,36 @@ class StudentsListController: UIViewController {
 
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
-    private func setUpDataSource(with models: Students) {
-        let viewModel = StudentListViewModel()
-        viewModel.students = models
-        tableDataSource = TableViewHelper(source: viewModel) {cell,model in
-            cell.configureCell(model: model)
-            return cell
-        }
-        _view.tableView.tableFooterView = UILabel("\(models.students.count) Students")
-        _view.tableView.dataSource = tableDataSource
-        _view.tableView.delegate = viewModel
-        _view.tableView.reloadData()
-    }
     private func loadDataSource() {
-        StudentListViewModel.getDataSource(completion: {[weak self] (result) in
+        fetchStudentsJSON(completion: {[weak self] (result) in
             switch result {
-            case let .success(s):
+            case let .success(studs):
                 DispatchQueue.main.async {
-                    self?.setUpDataSource(with: s)
+                    let viewModel = StudentListViewModel(studs)
+                    self?.tableDataSource = TableViewHelper(source: viewModel) {cell,model in
+                        cell.configureCell(model: model)
+                        return cell
+                    }
+                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(studs.students.count) Students")
+                    self?._view.tableView.dataSource = self?.tableDataSource
+                    self?._view.tableView.delegate = viewModel
+                    self?._view.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
             }
         })
+    }
+    
+    typealias StudentJSONResponse = (_ result: Result<Students>)->()
+    
+    private func fetchStudentsJSON(completion: @escaping(StudentJSONResponse)) {
+        do {
+            let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
+            let students = try JSONLoader.loadMockFile(resource)
+            completion(Result.success(students))
+        } catch (let e){
+            completion(Result.failure(e))
+        }
     }
 }

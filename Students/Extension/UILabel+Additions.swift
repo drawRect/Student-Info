@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    convenience init(_ txt: String) {
+    //Mark: - case: TableViewFooterView
+    convenience init(footerString: String) {
         self.init()
-        text = txt
+        text = footerString
         textColor = .lightGray
         sizeToFit()
         textAlignment = .center
