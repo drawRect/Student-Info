@@ -35,7 +35,7 @@ extension ProfessorListController {
             case let .success(p):
                 DispatchQueue.main.async {
                     self?.viewModel.professors = p
-                    self?._view.tableView.tableFooterView = UILabel("\(p.professors.count) Professors")
+                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(p.professors.count) Professors")
                     self?._view.tableView.reloadData()
                 }
             case let .failure(e):

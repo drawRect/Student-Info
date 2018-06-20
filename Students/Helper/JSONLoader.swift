@@ -17,7 +17,7 @@ enum MockLoaderError: Error {
     case invalidFileName(String)
     case invalidFileURL(URL)
     case invalidJSON(String)
-
+    
     var localizedDescription: String {
         switch self {
         case .invalidFileName(_): return "FileName is incorrect"
