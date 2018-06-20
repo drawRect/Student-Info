@@ -3,7 +3,7 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
-//  Copyright © 2017 Dash. All rights reserved.
+//  Copyright © 2017 DrawRect. All rights reserved.
 //
 
 import UIKit
@@ -12,8 +12,8 @@ class StudentListView: UIView {
 
     //MARK: - iVars
     public let tableView: UITableView = {
-        let tv = UITableView(frame: .zero)
-        tv.register(StudentInfoCell.classForCoder(), forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
+        let tv = UITableView()
+        tv.register(StudentInfoCell.self, forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()

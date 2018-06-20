@@ -3,33 +3,27 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
-//  Copyright © 2017 Dash. All rights reserved.
+//  Copyright © 2017 DrawRect. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class StudentInfoCell: UITableViewCell {
-    class var reuseIdentifier: String {
-        return String(describing: self)
+final class StudentInfoCell: UITableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 //MARK: - Extension|StudentInfoCell
 extension StudentInfoCell {
-    func populateCell(with student: Student) {
-        self.textLabel?.text = (student.name + ", " + student.age)
+    func configureCell(model: Student) { 
+        self.textLabel?.text = (model.name + ", " + model.age)
         self.textLabel?.textColor = Constants.titleColor
-        self.detailTextLabel?.text = student.address
-        self.detailTextLabel?.textColor = Constants.titleColor
-    }
-}
-
-extension StudentInfoCell {
-    func configure(viewModel: StudentListViewModel) {
-        self.textLabel?.text = (viewModel.student.name + ", " + viewModel.student.age)
-        self.textLabel?.textColor = Constants.titleColor
-        self.detailTextLabel?.text = viewModel.student.address
+        self.detailTextLabel?.text = model.address
         self.detailTextLabel?.textColor = Constants.titleColor
     }
 }

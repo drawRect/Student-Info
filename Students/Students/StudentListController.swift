@@ -3,7 +3,7 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
-//  Copyright © 2017 Dash. All rights reserved.
+//  Copyright © 2017 DrawRect. All rights reserved.
 //
 
 import Foundation
@@ -11,16 +11,12 @@ import UIKit
 
 class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
-//    private let viewModel: StudentListViewModel = StudentListViewModel()
-//    private var tableDataSource: GenericTableDataSource<StudentInfoCell, StudentListViewModel>?
-    private var tableDataSource: GenericTableDataSource<StudentInfoCell,StudentListViewModel,StudentListViewModel>?
-
+    private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
+    
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
         view = StudentListView(frame: UIScreen.main.bounds)
-//        _view.tableView.delegate = viewModel
-//        _view.tableView.dataSource = viewModel
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,29 +27,36 @@ class StudentsListController: UIViewController {
 
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
-    private func setUpDataSource(with models: Students) {
-        tableDataSource = GenericTableDataSource(models: models.students.map { StudentListViewModel(student: $0) }) { cell, model in
-            cell.configure(viewModel: model)
-            return cell
-        }
-        tableDataSource?.viewModel = StudentListViewModel.init(student: models.students.first!)
-        
-        _view.tableView.dataSource = tableDataSource
-        _view.tableView.reloadData()
-    }
     private func loadDataSource() {
-        StudentListViewModel.getDataSource(completion: {[weak self] (result) in
+        fetchStudentsJSON(completion: {[weak self] (result) in
             switch result {
-            case let .success(s):
+            case let .success(studs):
                 DispatchQueue.main.async {
-                    self?.setUpDataSource(with: s)
-//                    self?.viewModel.students = s
-                    self?._view.tableView.tableFooterView = UILabel("\(s.students.count) Students")
-//                    self?._view.tableView.reloadData()
+                    let viewModel = StudentListViewModel(studs)
+                    self?.tableDataSource = TableViewHelper(source: viewModel) {cell,model in
+                        cell.configureCell(model: model)
+                        return cell
+                    }
+                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(studs.students.count) Students")
+                    self?._view.tableView.dataSource = self?.tableDataSource
+                    self?._view.tableView.delegate = viewModel
+                    self?._view.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
             }
         })
+    }
+    
+    typealias StudentJSONResponse = (_ result: Result<Students>)->()
+    
+    private func fetchStudentsJSON(completion: @escaping(StudentJSONResponse)) {
+        do {
+            let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
+            let students = try JSONLoader.loadMockFile(resource)
+            completion(Result.success(students))
+        } catch (let e){
+            completion(Result.failure(e))
+        }
     }
 }

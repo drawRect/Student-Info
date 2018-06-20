@@ -3,16 +3,17 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 6/10/18.
-//  Copyright © 2018 Dash. All rights reserved.
+//  Copyright © 2018 DrawRect. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 extension UILabel {
-    convenience init(_ txt: String) {
+    //Mark: - case: TableViewFooterView
+    convenience init(footerString: String) {
         self.init()
-        text = txt
+        text = footerString
         textColor = .lightGray
         sizeToFit()
         textAlignment = .center

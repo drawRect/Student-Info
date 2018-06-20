@@ -3,62 +3,55 @@
 //  Students
 //
 //  Created by Ranjith Kumar on 12/5/17.
-//  Copyright © 2017 Dash. All rights reserved.
+//  Copyright © 2017 DrawRect. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 class StudentListViewModel: NSObject {
-    var students: Students?
-    let student: Student
     
-    init(student: Student) {
-        self.student = student
+    private let students: Students
+    init(_ students: Students) {
+        self.students = students
     }
-    
-    var sectionedStudents: [SexualType: [Student]] {
-        if let students = students?.students {
-            return Dictionary(grouping: students,by:{$0.sexualType})
-        }
-        return [:]
+    private var sectionedStudents: [SexualType: [Student]] {
+        return Dictionary(grouping: students.students, by:{$0.sexualType})
     }
 
-    class func getDataSource(completion: @escaping(_ result: Result<Students>)->())  {
-        do {
-            let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
-            let students = try JSONLoader.loadMockFile(resource)
-            completion(Result.success(students))
-        } catch (let e){
-            completion(Result.failure(e))
-        }
+    private func getSexuality(for section: Int) -> SexualType {
+        return Array(sectionedStudents.keys)[section]
+    }
+
+}
+
+extension StudentListViewModel: TVDataSourceConfigurable {
+    typealias T = Student
+    var array: [Student] {
+        return students.students
+    }
+    
+    func numberOfSections() -> Int {
+        return sectionedStudents.keys.count
+    }
+    func numberOfRows(in section: Int) -> Int {
+        let sexuality = getSexuality(for: section)
+        return sectionedStudents[sexuality]?.count ?? 0
+    }
+    func cellForRow(at indexPath: IndexPath) -> T? {
+        let sexuality = getSexuality(for: indexPath.section)
+        return (sectionedStudents[sexuality]?[indexPath.row])
+    }
+    
+    func titleForHeader(in section: Int) -> String? {
+        return getSexuality(for: section).rawValue
     }
 }
 
-//MARK: - Extension|StudentListViewModel
-extension StudentListViewModel: UITableViewDelegate,UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionedStudents.keys.count
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sexuality = Array(sectionedStudents.keys)[section]
-        return sectionedStudents[sexuality]?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = StudentInfoCell(style: .subtitle, reuseIdentifier: StudentInfoCell.reuseIdentifier)
-        let sexuality = Array(sectionedStudents.keys)[indexPath.section]
-        let student = (sectionedStudents[sexuality]?[indexPath.row])!
-        cell.populateCell(with:student)
-        return cell
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(sectionedStudents.keys)[section].rawValue
-    }
+extension StudentListViewModel: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = Constants.headerColor
     }
 }
-
-
