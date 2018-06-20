@@ -15,13 +15,18 @@ protocol AccessoryView {
 }
 
 extension AccessoryView where Self: UITextField {
+    
+    var getView: UIView {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
+    }
+    
     func includeLeftView() {
         self.leftViewMode = .always
-        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
+        self.leftView = getView
     }
     func includeRightView() {
         self.rightViewMode = .always
-        self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
+        self.rightView = getView
     }
 }
 
@@ -34,11 +39,11 @@ struct ScreenSize {
 
 class LoginViewController : UIViewController {
     
-    /*private let customField: (UITextField, UITextBorderStyle, String, UITextContentType) -> Void = {tf,ph,bs, tct  in
+    /*private let customField: (UITextField, UITextBorderStyle, String, UITextContentType) -> Void = {tf,bs, ph, tct  in
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = ph
         tf.borderStyle = bs
-        tf.setLeftViewMode()
+        tf.includeLeftView()
         if #available(iOS 11, *) {
             tf.textContentType = tct
         }
@@ -87,6 +92,8 @@ class LoginViewController : UIViewController {
         uNameField(userNameField)
         pwdField(passwordField)
         submitBtn(submitButton)
+//        customField(userNameField, .roundedRect, "EmailID", .username)
+//        customField(passwordField, .roundedRect, "Password", .password)
         self.view.addSubview(userNameField)
         self.view.addSubview(passwordField)
         self.view.addSubview(submitButton)
