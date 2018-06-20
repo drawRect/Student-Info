@@ -1,40 +1,47 @@
-//: A UIKit based Playground for presenting user interface
-  
+import Foundation
 import UIKit
-import PlaygroundSupport
 
+protocol LeftViewMode {
+    func setLeftViewMode()
+}
 
-extension UITextField {
+extension LeftViewMode where Self: UITextField {
     func setLeftViewMode() {
         self.leftViewMode = .always
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
     }
 }
 
+extension UITextField: LeftViewMode {}
+
 struct ScreenSize {
     static let width = 375
     static let height = 667
 }
 
-class LoginViewController : UIViewController {
+public class LoginViewController : UIViewController {
     
     private let userNameField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "Email ID"
-        tf.borderStyle = UITextBorderStyle.roundedRect
+        tf.borderStyle = UITextField.BorderStyle.roundedRect
         tf.setLeftViewMode()
-        tf.textContentType = .username
+        if #available(iOS 11, *) {
+            tf.textContentType = .username
+        }
         return tf
     }()
-    private let passwordField: UITextField = {
+     private let passwordField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.placeholder = "Password"
         tf.isSecureTextEntry = true
         tf.borderStyle = .roundedRect
+        if #available(iOS 11, *) {
+            tf.textContentType = .password
+        }
         tf.setLeftViewMode()
-        tf.textContentType = .password
         return tf
     }()
     private let submitBtn: UIButton = {
@@ -47,16 +54,19 @@ class LoginViewController : UIViewController {
         btn.layer.borderColor = UIColor.lightGray.cgColor
         return btn
     }()
-    override func loadView() {
+    
+    public override func viewDidLoad() {
         setUpViewElements()
         setUpConstraints()
+        super.viewDidLoad()
     }
-    
     private func setUpViewElements() {
         self.view.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
+        self.view.backgroundColor = .red
         self.view.addSubview(userNameField)
         self.view.addSubview(passwordField)
         self.view.addSubview(submitBtn)
+        print("Frame: \(self.view.frame)")
     }
     
     private func setUpConstraints() {
@@ -80,7 +90,3 @@ class LoginViewController : UIViewController {
             ])
     }
 }
-
-// Present the view controller in the Live View window
-let navController = UINavigationController(rootViewController: LoginViewController())
-PlaygroundPage.current.liveView = navController
