@@ -48,15 +48,6 @@ class LoginViewController : UIViewController {
         return f(e)
     }
     
-    private let submitBtn: (UIButton) -> Void = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("Submit", for: .normal)
-        $0.layer.cornerRadius = 5.0
-        $0.backgroundColor = .orange
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.lightGray.cgColor
-    }
-    
     var userNameField: UITextField = {
         let tf = UITextField()
         setUpUIElement(tf) {
