@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StudentInfoCell: UITableViewCell {
+final class StudentInfoCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
