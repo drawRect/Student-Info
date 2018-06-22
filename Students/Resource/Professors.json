@@ -1,21 +1,21 @@
 {
     "professors": [
                    {
-                   "name": "John",
-                   "age": "27",
-                   "address": "Bangalore",
+                   "name": "Brandon Williams",
+                   "age": "29",
+                   "address": "Berlin",
                    "sex": "Male",
-                   "qualification": "MCA"
+                   "qualification": "Master Degree"
                    },
                    {
-                   "name": "Bill Gaten",
-                   "age": "26",
-                   "address": "Chennai",
+                   "name": "Stephen",
+                   "age": "28",
+                   "address": "Berlin",
                    "sex": "Male",
-                   "qualification": "MCA"
+                   "qualification": "Master Degree"
                    },
                    {
-                   "name": "Nisha",
+                   "name": "Parrot",
                    "age": "26",
                    "address": "Delhi",
                    "sex": "Female",
@@ -29,18 +29,18 @@
                    "qualification": "M.Sc M.Phil"
                    },
                    {
-                   "name": "Revathi",
+                   "name": "Cuckoo",
                    "age": "29",
                    "address": "Bangalore",
                    "sex": "Female",
                    "qualification": "M.E"
                    },
                    {
-                   "name": "Bill",
-                   "age": "27",
-                   "address": "Kovai",
+                   "name": "Chris Eidhof",
+                   "age": "29",
+                   "address": "Germany",
                    "sex": "Male",
-                   "qualification": "M.Ed"
+                   "qualification": "Master Degree"
                    }
                    ]
 }

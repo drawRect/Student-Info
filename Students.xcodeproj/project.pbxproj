@@ -29,6 +29,7 @@
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
 		07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */; };
+		07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1520DBEA98006AA20D /* SignupViewController.swift */; };
 		C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
 		C67DF52A20CEA26400748A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
 		C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */; };
@@ -61,6 +62,7 @@
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 		07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDataSourceConfigurable.swift; sourceTree = "<group>"; };
+		07E4CB1520DBEA98006AA20D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C67DF52620CE70E300748A15 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		C67DF52920CEA26400748A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				071C9DD71FD5E892009E9D60 /* AppDelegate.swift */,
+				07E4CB1420DBEA79006AA20D /* Signup */,
 				C67FCA8520DA7B6800EBAE78 /* Login */,
 				C6F5439F20D3C7B30015AC74 /* TableViewHelper */,
 				078A9CA120CD043C005C7922 /* Students */,
@@ -174,6 +177,14 @@
 				C67DF52620CE70E300748A15 /* UIColor+Additions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		07E4CB1420DBEA79006AA20D /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				07E4CB1520DBEA98006AA20D /* SignupViewController.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		C67FCA8520DA7B6800EBAE78 /* Login */ = {
@@ -285,6 +296,7 @@
 				078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */,
 				078A9CAA20CD0F0D005C7922 /* Professor.swift in Sources */,
 				078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */,
+				07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */,
 				C6F543A320D3C7E00015AC74 /* Resuable.swift in Sources */,
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,
 				071C9DEA1FD60A4B009E9D60 /* Students.swift in Sources */,
