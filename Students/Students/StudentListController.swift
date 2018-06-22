@@ -25,6 +25,7 @@ class StudentsListController: UIViewController {
     }
 }
 
+
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
     private func loadDataSource() {
@@ -48,7 +49,7 @@ extension StudentsListController {
         })
     }
     
-    typealias StudentJSONResponse = (_ result: Result<Students>)->()
+    private typealias StudentJSONResponse = (_ result: Result<Students>)->()
     
     private func fetchStudentsJSON(completion: @escaping(StudentJSONResponse)) {
         do {
