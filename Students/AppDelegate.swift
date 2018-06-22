@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var window: UIWindow? = {
-        let w =  UIWindow()
+        let w =  UIWindow(frame: UIScreen.main.bounds)
         w.makeKeyAndVisible()
         return w }()
     
@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setRootScene()
         return true
     }
-    
 }
 
 extension AppDelegate {
