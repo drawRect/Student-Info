@@ -12,6 +12,7 @@ class SignupViewController: UIViewController {
 
     private lazy var nameTextField: UITextField = {
         let txtfield = UITextField()
+        txtfield.translatesAutoresizingMaskIntoConstraints = false
         txtfield.placeholder = "Name"
         txtfield.borderStyle = .roundedRect
         txtfield.font = .systemFont(ofSize: 17)
@@ -23,6 +24,7 @@ class SignupViewController: UIViewController {
 
     private lazy var emailTextField: UITextField = {
         let txtfield = UITextField()
+        txtfield.translatesAutoresizingMaskIntoConstraints = false
         txtfield.placeholder = "Email"
         txtfield.keyboardType = .emailAddress
         txtfield.borderStyle = .roundedRect
@@ -35,6 +37,7 @@ class SignupViewController: UIViewController {
 
     private lazy var phoneTextField: UITextField = {
         let txtfield = UITextField()
+        txtfield.translatesAutoresizingMaskIntoConstraints = false
         txtfield.placeholder = "Phone"
         txtfield.borderStyle = .roundedRect
         txtfield.keyboardType = .numberPad
@@ -51,7 +54,8 @@ class SignupViewController: UIViewController {
 
     private lazy var passwordTextField: UITextField = {
         let txtfield = UITextField()
-        txtfield.placeholder = "Password"
+        txtfield.translatesAutoresizingMaskIntoConstraints = false
+        txtfield.placeholder = "••••••••••••••••"
         txtfield.borderStyle = .roundedRect
         txtfield.isSecureTextEntry = true
         txtfield.font = .systemFont(ofSize: 17)
@@ -63,7 +67,8 @@ class SignupViewController: UIViewController {
 
     private lazy var confirmPasswordTextField: UITextField = {
         let txtfield = UITextField()
-        txtfield.placeholder = "Confirm Password"
+        txtfield.translatesAutoresizingMaskIntoConstraints = false
+        txtfield.placeholder = "••••••••••••••••"
         txtfield.borderStyle = .roundedRect
         txtfield.isSecureTextEntry = true
         txtfield.font = .systemFont(ofSize: 17)
@@ -74,45 +79,56 @@ class SignupViewController: UIViewController {
     }()
 
     private lazy var submitButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Submit", for: .normal)
-        btn.backgroundColor = Constants.titleColor
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Signup", for: .normal)
         btn.layer.cornerRadius = 8
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+
         return btn
     }()
 
     private lazy var loginButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Already have an account? Tap to Login", for: .normal)
-        btn.backgroundColor = Constants.titleColor
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Already have an account?. Tap to Login", for: .normal)
         btn.layer.cornerRadius = 8
-        btn.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+
         return btn
     }()
     private lazy var forgotPasswordButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Forgot the password? Tap to get back", for: .normal)
-        btn.backgroundColor = Constants.headerColor
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("I forgot my password", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
         btn.layer.cornerRadius = 8
-        btn.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+
         return btn
     }()
 
     private lazy var stackView: UIStackView = {
-        let height = 8*50 + 7*8
-        let sv = UIStackView(frame: CGRect(x:20,y:100,width:Int(view.bounds.width-(2*20)),height:height))
+        let sv = UIStackView(arrangedSubviews: [
+            nameTextField,
+            emailTextField,
+            phoneTextField,
+            passwordTextField,
+            confirmPasswordTextField,
+            submitButton,
+            loginButton,
+            forgotPasswordButton
+            ])
+        sv.translatesAutoresizingMaskIntoConstraints = false
         sv.distribution = .fillEqually
         sv.axis = .vertical
-        sv.spacing = 8
-        sv.addArrangedSubview(nameTextField)
-        sv.addArrangedSubview(emailTextField)
-        sv.addArrangedSubview(phoneTextField)
-        sv.addArrangedSubview(passwordTextField)
-        sv.addArrangedSubview(confirmPasswordTextField)
-        sv.addArrangedSubview(submitButton)
-        sv.addArrangedSubview(loginButton)
-        sv.addArrangedSubview(forgotPasswordButton)
+        sv.spacing = 16
+        sv.isLayoutMarginsRelativeArrangement = true
+        sv.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
+
         return sv
     }()
 
@@ -121,6 +137,14 @@ class SignupViewController: UIViewController {
         title = "Signup"
         view.backgroundColor = .white
         view.addSubview(stackView)
+
+        let height = 8*50 + 7*16
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+            stackView.heightAnchor.constraint(equalToConstant: CGFloat(height))
+            ])
     }
 
     @objc private func didTapNextBtn() {
@@ -134,7 +158,7 @@ class SignupViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        nameTextField.becomeFirstResponder()
+//        nameTextField.becomeFirstResponder()
     }
 
 }
