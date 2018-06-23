@@ -30,6 +30,7 @@
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
 		07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */; };
 		07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1520DBEA98006AA20D /* SignupViewController.swift */; };
+		07E4CB1E20DE561E006AA20D /* TxtFieldUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1D20DE561E006AA20D /* TxtFieldUtils.swift */; };
 		C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
 		C67DF52A20CEA26400748A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
 		C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */; };
@@ -63,6 +64,7 @@
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 		07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDataSourceConfigurable.swift; sourceTree = "<group>"; };
 		07E4CB1520DBEA98006AA20D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		07E4CB1D20DE561E006AA20D /* TxtFieldUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFieldUtils.swift; sourceTree = "<group>"; };
 		C67DF52620CE70E300748A15 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		C67DF52920CEA26400748A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				071C9DD71FD5E892009E9D60 /* AppDelegate.swift */,
+				07E4CB1D20DE561E006AA20D /* TxtFieldUtils.swift */,
 				07E4CB1420DBEA79006AA20D /* Signup */,
 				C67FCA8520DA7B6800EBAE78 /* Login */,
 				078A9CA120CD043C005C7922 /* Students */,
@@ -285,6 +288,7 @@
 				078A9CB320CD1003005C7922 /* ProfessorInfoCell.swift in Sources */,
 				071C9DD81FD5E892009E9D60 /* AppDelegate.swift in Sources */,
 				078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */,
+				07E4CB1E20DE561E006AA20D /* TxtFieldUtils.swift in Sources */,
 				078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */,
 				078A9CAC20CD0F2D005C7922 /* Resource.swift in Sources */,
 				071C9DF01FD60C7F009E9D60 /* StudentInfoCell.swift in Sources */,
