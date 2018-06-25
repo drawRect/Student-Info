@@ -101,7 +101,7 @@ final class SignupViewController: UIViewController {
         let btn = UIButton(type: .system)
         baseButtonStyle(btn)
         btn.setTitle("Already have an account?. Tap to Login", for: .normal)
-
+        btn.addTarget(self, action: #selector(didTapLoginBtn), for: .touchUpInside)
         return btn
     }()
     private lazy var forgotPasswordButton: UIButton = {
@@ -139,7 +139,7 @@ final class SignupViewController: UIViewController {
         title = "Signup"
         view.backgroundColor = .white
         view.addSubview(stackView)
-
+        
         let height = 8*50 + 7*16
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
@@ -157,7 +157,11 @@ final class SignupViewController: UIViewController {
     @objc private func didTapSubmitBtn() {
         print(#function)
     }
-
+    
+    @objc private func didTapLoginBtn() {
+        let vc = LoginViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //                nameTextField.becomeFirstResponder()

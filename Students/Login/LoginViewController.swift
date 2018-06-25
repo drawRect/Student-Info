@@ -39,138 +39,96 @@ struct ScreenSize {
 
 class LoginViewController : UIViewController {
     
-    static func setUpUIElement<A,B>(_ e: A, f: (A) -> B) -> B {
-        return f(e)
-    }
-    
-    var userNameField: UITextField = {
-        let tf = UITextField()
-        setUpUIElement(tf) {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.placeholder = "Email ID"
-            $0.borderStyle = .roundedRect
-            $0.includeLeftView()
-            if #available(iOS 11, *) {
-                $0.textContentType = .username
-            }
-        }
-        return tf
+    private lazy var emailTextField: UITextField = {
+        
+        let txtfield = UITextField()
+        txtfield.delegate = self
+        
+        let roundedRectStyle =
+            baseTextFieldStyle
+                <> emailTextFieldStyle
+                <> setAutocorrectionNo
+                <> nextRetunKeyStyle
+        roundedRectStyle(txtfield)
+        
+        return txtfield
     }()
     
-    var passwordField: UITextField = {
-        let tf = UITextField()
-        setUpUIElement(tf) {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.placeholder = "Password"
-            $0.isSecureTextEntry = true
-            $0.borderStyle = .roundedRect
-            $0.includeLeftView()
-            if #available(iOS 11, *) {
-                $0.textContentType = .password
-            }
-        }
-        return tf
+    private lazy var passwordField: UITextField = {
+        
+        let txtfield = UITextField()
+        txtfield.delegate = self
+        let roundedTextFieldStyle =
+            baseTextFieldStyle
+                <> nextRetunKeyStyle
+                <> passwordTextFieldStyle
+        
+        roundedTextFieldStyle(txtfield)
+        
+        return txtfield
     }()
     
-    var submitButton: UIButton = {
-        let btn = UIButton()
-        setUpUIElement(btn) {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.setTitle("Submit", for: .normal)
-            $0.layer.cornerRadius = 5.0
-            $0.backgroundColor = .orange
-            $0.layer.borderWidth = 1.0
-            $0.layer.borderColor = UIColor.lightGray.cgColor
-        }
+    private lazy var submitButton: UIButton = {
+        
+        let btn = UIButton(type: .system)
+        baseButtonStyle(btn)
+        btn.setTitle("Login", for: .normal)
+        
         return btn
     }()
     
-    var getLayoutGuide: UILayoutGuide {
+    private var getLayoutGuide: UILayoutGuide {
         if #available(iOS 11.0, *) {
             return view.safeAreaLayoutGuide
         }
         return view.layoutMarginsGuide
     }
-
-    /*private let customField: (UITextField, UITextBorderStyle, String, UITextContentType) -> Void = {tf,bs, ph, tct  in
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = ph
-        tf.borderStyle = bs
-        tf.includeLeftView()
-        if #available(iOS 11, *) {
-            tf.textContentType = tct
-        }
-    }*/
     
-    private let uNameField: (UITextField) -> Void = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.placeholder = "Email ID"
-        $0.borderStyle = .roundedRect
-        $0.includeLeftView()
-        if #available(iOS 11, *) {
-            $0.textContentType = .username
-        }
-    }
-    private let pwdField: (UITextField) -> Void = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.placeholder = "Password"
-        $0.isSecureTextEntry = true
-        $0.borderStyle = .roundedRect
-        $0.includeLeftView()
-        if #available(iOS 11, *) {
-            $0.textContentType = .password
-        }
-    }
-    private let submitBtn: (UIButton) -> Void = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("Submit", for: .normal)
-        $0.layer.cornerRadius = 5.0
-        $0.backgroundColor = .orange
-        $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor.lightGray.cgColor
-    }
+    private lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            emailTextField,
+            passwordField,
+            submitButton
+            ])
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.distribution = .fillEqually
+        sv.axis = .vertical
+        sv.spacing = 16
+        sv.isLayoutMarginsRelativeArrangement = true
+        sv.layoutMargins = UIEdgeInsetsMake(32, 16, 32, 16)
+        return sv
+    }()
     
     override func viewDidLoad() {
-        setUpViewElements()
+        title = "Login"
+        view.backgroundColor = .white
+        view.addSubview(stackView)
+        
+        let height:CGFloat = 3*50 + 2*16
+        NSLayoutConstraint.activate([
+            stackView.leftAnchor.constraint(equalTo: getLayoutGuide.leftAnchor),
+            stackView.topAnchor.constraint(equalTo: getLayoutGuide.topAnchor, constant: 65),
+            stackView.rightAnchor.constraint(equalTo: getLayoutGuide.rightAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: height)
+            ])
         super.viewDidLoad()
     }
-
-    private func setUpViewElements() {
-        self.view.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
-        self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isTranslucent = false
-
-        uNameField(userNameField)
-        pwdField(passwordField)
-        submitBtn(submitButton)
-//        customField(userNameField, .roundedRect, "EmailID", .username)
-//        customField(passwordField, .roundedRect, "Password", .password)
-
-        self.view.addSubview(userNameField)
-        self.view.addSubview(passwordField)
-        self.view.addSubview(submitButton)
-        setUpConstraints()
-    }
     
-    private func setUpConstraints() {
-        let layoutGuide = getLayoutGuide
-        NSLayoutConstraint.activate([
-            self.userNameField.leftAnchor.constraint(equalTo: layoutGuide.leftAnchor, constant: 20),
-            self.userNameField.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 44),
-            self.userNameField.rightAnchor.constraint(equalTo: layoutGuide.rightAnchor, constant: -20),
-            self.userNameField.bottomAnchor.constraint(equalTo: self.passwordField.topAnchor, constant: -20)
-            ])
-        NSLayoutConstraint.activate([
-            self.passwordField.leftAnchor.constraint(equalTo: self.userNameField.leftAnchor),
-            self.passwordField.rightAnchor.constraint(equalTo: self.userNameField.rightAnchor),
-            self.passwordField.topAnchor.constraint(equalTo: self.userNameField.bottomAnchor, constant: 20),
-            self.passwordField.bottomAnchor.constraint(equalTo: self.submitButton.topAnchor, constant: -20),
-            ])
-        NSLayoutConstraint.activate([
-            self.submitButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80),
-            self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 20),
-            self.submitButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80),
-            self.submitButton.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor, constant: 20)
-            ])
+    @objc private func didTapSubmitBtn() {
+        print(#function)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        switch textField {
+        case emailTextField: passwordField.becomeFirstResponder()
+        case passwordField: didTapSubmitBtn()
+        default:
+            self.view.endEditing(true)
+        }
+        return true
     }
 }
