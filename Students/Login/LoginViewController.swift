@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-enum AccessoryViewEnum<T> {
-    case leftView
-    case rightView
-}
-
 protocol AccessoryView {
     func includeLeftView()
     func includeRightView()
@@ -96,16 +91,61 @@ class LoginViewController : UIViewController {
         }
         return view.layoutMarginsGuide
     }
+
+    /*private let customField: (UITextField, UITextBorderStyle, String, UITextContentType) -> Void = {tf,bs, ph, tct  in
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.placeholder = ph
+        tf.borderStyle = bs
+        tf.includeLeftView()
+        if #available(iOS 11, *) {
+            tf.textContentType = tct
+        }
+    }*/
+    
+    private let uNameField: (UITextField) -> Void = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.placeholder = "Email ID"
+        $0.borderStyle = .roundedRect
+        $0.includeLeftView()
+        if #available(iOS 11, *) {
+            $0.textContentType = .username
+        }
+    }
+    private let pwdField: (UITextField) -> Void = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.placeholder = "Password"
+        $0.isSecureTextEntry = true
+        $0.borderStyle = .roundedRect
+        $0.includeLeftView()
+        if #available(iOS 11, *) {
+            $0.textContentType = .password
+        }
+    }
+    private let submitBtn: (UIButton) -> Void = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setTitle("Submit", for: .normal)
+        $0.layer.cornerRadius = 5.0
+        $0.backgroundColor = .orange
+        $0.layer.borderWidth = 1.0
+        $0.layer.borderColor = UIColor.lightGray.cgColor
+    }
     
     override func viewDidLoad() {
         setUpViewElements()
         super.viewDidLoad()
     }
-    
+
     private func setUpViewElements() {
         self.view.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
+
+        uNameField(userNameField)
+        pwdField(passwordField)
+        submitBtn(submitButton)
+//        customField(userNameField, .roundedRect, "EmailID", .username)
+//        customField(passwordField, .roundedRect, "Password", .password)
+
         self.view.addSubview(userNameField)
         self.view.addSubview(passwordField)
         self.view.addSubview(submitButton)
