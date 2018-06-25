@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var window: UIWindow? = {
-        let w =  UIWindow()
+        let w =  UIWindow(frame: UIScreen.main.bounds)
         w.makeKeyAndVisible()
         return w }()
     
@@ -20,16 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setRootScene()
         return true
     }
-    
 }
 
 extension AppDelegate {
     private func setRootScene() {
         let studNC = UINavigationController(.students, child: StudentsListController())
         let profNC = UINavigationController(.professors, child: ProfessorListController())
+        let signupNC = UINavigationController.init(rootViewController: SignupViewController())
 
         let tc = UITabBarController()
-        tc.viewControllers = [profNC,studNC]
+        tc.viewControllers = [signupNC,profNC,studNC]
 
         window?.rootViewController = tc
     }

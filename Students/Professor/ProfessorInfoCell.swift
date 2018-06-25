@@ -9,17 +9,20 @@
 import Foundation
 import UIKit
 
-class ProfessorInfoCell: UITableViewCell {
-    class var reuseIdentifier: String {
-        return String(describing: self)
+final class ProfessorInfoCell: UITableViewCell {
+    override init(style: UITableViewCellStyle = .subtitle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 //MARK: - Extension|ProfessorInfoCell
 extension ProfessorInfoCell {
-    func populateCell(with professor: Professor) {
-        self.textLabel?.text = (professor.name + ". " + professor.qualification + ", " + professor.age)
-        self.detailTextLabel?.text = professor.address
+    func configureCell(model: Professor) {
+        self.textLabel?.text = (model.name + ". " + model.qualification + ", " + model.age)
+        self.detailTextLabel?.text = model.address
         self.textLabel?.textColor = Constants.titleColor
         self.detailTextLabel?.textColor = Constants.titleColor
     }

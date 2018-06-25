@@ -11,14 +11,12 @@ import UIKit
 
 class ProfessorListController: UIViewController {
     private lazy var _view: ProfessorListView = view as! ProfessorListView
-    private let viewModel: ProfessorListViewModel = ProfessorListViewModel()
+    private var tableDataSource: TableViewHelper<ProfessorListViewModel,ProfessorInfoCell,Professor>?
 
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
         view = ProfessorListView(frame: UIScreen.main.bounds)
-        _view.tableView.delegate = viewModel
-        _view.tableView.dataSource = viewModel
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +28,35 @@ class ProfessorListController: UIViewController {
 //MARK: - Extension|ProfessorListController
 extension ProfessorListController {
     private func loadDataSource() {
-        viewModel.getDataSource(completion: {[weak self] (result) in
+        fetchProfessorsJSON(completion: {[weak self] (result) in
             switch result {
-            case let .success(p):
+            case let .success(profs):
                 DispatchQueue.main.async {
-                    self?.viewModel.professors = p
-                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(p.professors.count) Professors")
+                    let viewModel = ProfessorListViewModel(profs)
+                    self?.tableDataSource = TableViewHelper(source: viewModel) {cell,model in
+                        cell.configureCell(model: model)
+                        return cell
+                    }
+                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(profs.professors.count) Professors")
+                    self?._view.tableView.dataSource = self?.tableDataSource
+                    self?._view.tableView.delegate = viewModel
                     self?._view.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
             }
         })
+    }
+    
+    private typealias ProfessorsJSONResponse = (_ result: Result<Professors>)->()
+
+    private func fetchProfessorsJSON(completion: @escaping(ProfessorsJSONResponse)) {
+        do {
+            let resource = Resource(name: Constants.profJSONFileName, A: Professors.self)
+            let professors = try JSONLoader.loadMockFile(resource)
+            completion(Result.success(professors))
+        } catch (let e){
+            completion(Result.failure(e))
+        }
     }
 }
