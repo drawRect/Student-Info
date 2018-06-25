@@ -9,34 +9,6 @@
 import Foundation
 import UIKit
 
-protocol AccessoryView {
-    func includeLeftView()
-    func includeRightView()
-}
-
-extension AccessoryView where Self: UITextField {
-    
-    var getView: UIView {
-        return UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.frame.height))
-    }
-    
-    func includeLeftView() {
-        self.leftViewMode = .always
-        self.leftView = getView
-    }
-    func includeRightView() {
-        self.rightViewMode = .always
-        self.rightView = getView
-    }
-}
-
-extension UITextField: AccessoryView {}
-
-struct ScreenSize {
-    static let width = 375
-    static let height = 667
-}
-
 class LoginViewController : UIViewController {
     
     private lazy var emailTextField: UITextField = {
@@ -44,36 +16,37 @@ class LoginViewController : UIViewController {
         let txtfield = UITextField()
         txtfield.delegate = self
         
-        let roundedRectStyle =
-            baseTextFieldStyle
-                <> emailTextFieldStyle
-                <> setAutocorrectionNo
-                <> nextRetunKeyStyle
-        roundedRectStyle(txtfield)
-        
+        txtfield
+            |> baseTextFieldStyle
+            <> emailTextFieldStyle
+            <> setAutocorrectionNo
+            <> nextRetunKeyStyle
+            <> addLeftNRightView
+
         return txtfield
     }()
     
     private lazy var passwordField: UITextField = {
         
-        let txtfield = UITextField()
+        var txtfield = UITextField()
         txtfield.delegate = self
-        let roundedTextFieldStyle =
-            baseTextFieldStyle
-                <> nextRetunKeyStyle
-                <> passwordTextFieldStyle
-        
-        roundedTextFieldStyle(txtfield)
-        
+
+        txtfield
+            |> baseTextFieldStyle
+            <> nextRetunKeyStyle
+            <> passwordTextFieldStyle
+            <> addLeftNRightView
+
         return txtfield
     }()
     
     private lazy var submitButton: UIButton = {
         
         let btn = UIButton(type: .system)
-        baseButtonStyle(btn)
         btn.setTitle("Login", for: .normal)
-        
+
+        btn |> baseButtonStyle
+
         return btn
     }()
     
@@ -90,6 +63,7 @@ class LoginViewController : UIViewController {
             passwordField,
             submitButton
             ])
+        sv.arrangedSubviews.forEach(setTranslatesAutoresizingMaskIntoConstraints)
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.distribution = .fillEqually
         sv.axis = .vertical
@@ -103,8 +77,10 @@ class LoginViewController : UIViewController {
         title = "Login"
         view.backgroundColor = .white
         view.addSubview(stackView)
-        
-        let height:CGFloat = 3*50 + 2*16
+
+        //Why i have given 4*50? because of layout guide
+        //isLayoutMarginsRelativeArrangement
+        let height:CGFloat = 4*50 + 2*16
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalTo: getLayoutGuide.leftAnchor),
             stackView.topAnchor.constraint(equalTo: getLayoutGuide.topAnchor, constant: 65),
