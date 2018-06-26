@@ -38,6 +38,9 @@
 		C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */; };
 		C6F543A220D3C7E00015AC74 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F543A020D3C7E00015AC74 /* TableViewHelper.swift */; };
 		C6F543A320D3C7E00015AC74 /* Resuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F543A120D3C7E00015AC74 /* Resuable.swift */; };
+		D63B020720E206FA00613A22 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B020620E206FA00613A22 /* UIViewController+Extension.swift */; };
+		D63B020920E2384700613A22 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B020820E2384700613A22 /* LoginView.swift */; };
+		D63B020B20E23DC500613A22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B020A20E23DC500613A22 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6F543A020D3C7E00015AC74 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		C6F543A120D3C7E00015AC74 /* Resuable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resuable.swift; sourceTree = "<group>"; };
+		D63B020620E206FA00613A22 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D63B020820E2384700613A22 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D63B020A20E23DC500613A22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,7 @@
 				078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */,
 				078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */,
 				C67DF52620CE70E300748A15 /* UIColor+Additions.swift */,
+				D63B020620E206FA00613A22 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */,
+				D63B020820E2384700613A22 /* LoginView.swift */,
+				D63B020A20E23DC500613A22 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -288,12 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				07E4CB2220E1783E006AA20D /* SignupViewModel.swift in Sources */,
+				D63B020920E2384700613A22 /* LoginView.swift in Sources */,
 				078A9CB420CD1003005C7922 /* ProfessorListView.swift in Sources */,
 				C67DF52A20CEA26400748A15 /* Constants.swift in Sources */,
 				078A9CA820CD0F03005C7922 /* Professors.swift in Sources */,
 				C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */,
 				078A9CB320CD1003005C7922 /* ProfessorInfoCell.swift in Sources */,
 				071C9DD81FD5E892009E9D60 /* AppDelegate.swift in Sources */,
+				D63B020B20E23DC500613A22 /* LoginViewModel.swift in Sources */,
 				078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */,
 				07E4CB1E20DE561E006AA20D /* UIElementUtils.swift in Sources */,
 				078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */,
@@ -309,6 +320,7 @@
 				078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */,
 				07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */,
 				C6F543A320D3C7E00015AC74 /* Resuable.swift in Sources */,
+				D63B020720E206FA00613A22 /* UIViewController+Extension.swift in Sources */,
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,
 				071C9DEA1FD60A4B009E9D60 /* Students.swift in Sources */,
 				C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */,
