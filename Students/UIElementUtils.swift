@@ -1,5 +1,5 @@
 //
-//  TxtFieldUtils.swift
+//  UIElementUtils.swift
 //  Students
 //
 //  Created by Ranjith Kumar on 6/23/18.
@@ -9,24 +9,33 @@
 import Foundation
 import UIKit
 
+/* DIAMOND OPERATOR*/
 precedencegroup SingleTypeComposition {
     associativity: right
+    higherThan: ForwardApplication
 }
 
 infix operator <>: SingleTypeComposition
 
 func <> <A: AnyObject>(f: @escaping (A) -> Void, g: @escaping (A) -> Void) -> (A) -> Void {
-    return {
-        a in
+    return { a in
         f(a)
         g(a)
     }
 }
 
+/* PIPE OPERATOR*/
+precedencegroup ForwardApplication {
+    associativity: left
+}
+infix operator |>: ForwardApplication
+public func |> <A, B>(x: A, f: (A) -> B) -> B {
+    return f(x)
+}
+
 /* TextField */
 
 let baseTextFieldStyle: (UITextField) -> Void = {
-    $0.translatesAutoresizingMaskIntoConstraints = false
     $0.font = .systemFont(ofSize: 17)
     $0.borderStyle = .roundedRect
 }
@@ -55,20 +64,28 @@ let doneReturnKeyStyle: (UITextField) -> Void = {
     $0.returnKeyType = .done
 }
 
-func nextOnlyToolBar() -> UIToolbar {
+let addLeftNRightView: (UITextField) -> Void = {
+    let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: $0.frame.height))
+    $0.leftView = view
+    $0.rightView = view
+    $0.leftViewMode = .always
+    $0.rightViewMode = .always
+}
+
+let setTranslatesAutoresizingMaskIntoConstraints : (UIView) -> Void = {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+}
+
+let phoneToolbar: (UITextField) -> Void = {
     let toolbar = UIToolbar(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:50))
     let flexibleSapceBtnItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     toolbar.items = [flexibleSapceBtnItem]
-    return toolbar
+    $0.inputAccessoryView = toolbar
 }
 
 /* UIButton */
 let baseButtonStyle: (UIButton) -> Void = {
-    $0.translatesAutoresizingMaskIntoConstraints = false
     $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
     $0.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
     $0.layer.cornerRadius = 8
 }
-
-
-
