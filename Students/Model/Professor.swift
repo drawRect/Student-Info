@@ -10,6 +10,9 @@ import Foundation
 
 struct Professor: Decodable {
     let name,age,address,sex,qualification: String
+}
+
+extension Professor {
     var sexualType: SexualType {
         switch self.sex {
         case SexualType.Male.rawValue:

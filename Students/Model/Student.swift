@@ -8,14 +8,17 @@
 
 import Foundation
 
+struct Student: Decodable {
+    let name,age,address,sex: String
+}
+
 enum SexualType: String {
     case Male = "Male"
     case Female = "Female"
     case Other = "Other"
 }
 
-struct Student: Decodable {
-    let name,age,address,sex: String
+extension Student {
     var sexualType: SexualType {
         switch self.sex {
         case SexualType.Male.rawValue:
@@ -27,3 +30,4 @@ struct Student: Decodable {
         }
     }
 }
+
