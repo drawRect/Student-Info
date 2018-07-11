@@ -28,10 +28,12 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Overture (0.2.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - Overture (~> 0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -43,6 +45,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - nanopb
+    - Overture
 
 SPEC CHECKSUMS:
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
@@ -53,7 +56,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Overture: d1c61764d0bf32897934382dc46e131ee31cc094
 
-PODFILE CHECKSUM: 2956cfb6aee7f9687ab5e7910c728c9538b4a1fb
+PODFILE CHECKSUM: 13bec0f7007c20d42b464b2a097264229e416732
 
 COCOAPODS: 1.5.3

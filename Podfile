@@ -8,5 +8,6 @@ target 'Students' do
   # Pods for Students
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Overture', '~> 0.2'
 
 end
