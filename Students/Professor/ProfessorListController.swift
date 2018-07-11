@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class ProfessorListController: UIViewController {
+final class ProfessorListController: UIViewController {
     private lazy var _view: ProfessorListView = view as! ProfessorListView
     private var tableDataSource: TableViewHelper<ProfessorListViewModel,ProfessorInfoCell,Professor>?
 
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
-        view = ProfessorListView(frame: UIScreen.main.bounds)
+        view = ProfessorListView(frame: Constants.Screen.bounds)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

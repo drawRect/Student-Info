@@ -13,9 +13,10 @@ final class SignupViewController: UIViewController {
     private var _view: SignupView{return view as! SignupView}
     private let viewModel: SignupViewModel = SignupViewModel()
 
+    //MARK: - Overriden functions
     override func loadView() {
         super.loadView()
-        view = SignupView(frame: UIScreen.main.bounds)
+        view = SignupView(frame: Constants.Screen.bounds)
     }
 
     override func viewDidLoad() {
@@ -23,7 +24,12 @@ final class SignupViewController: UIViewController {
         title = "Signup"
         viewAddOns()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //  nameTextField.becomeFirstResponder()
+    }
 
+    //MARK: - Private functions
     private func viewAddOns() {
         [_view.nameTextField,
          _view.emailTextField,
@@ -31,6 +37,7 @@ final class SignupViewController: UIViewController {
          _view.passwordTextField].forEach({$0.delegate = self})
         _view.submitButton.addTarget(self, action: #selector(submitClicked), for: .touchUpInside)
         _view.loginButton.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
+        _view.moreButton.addTarget(self, action: #selector(moreButtonClicked), for: .touchUpInside)
         _view.installConstraints()
     }
 
@@ -42,9 +49,22 @@ final class SignupViewController: UIViewController {
         let vc = LoginViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //  nameTextField.becomeFirstResponder()
+
+    @objc private func moreButtonClicked() {
+        let alertController = UIAlertController(title: "Choose your signup method", message: nil, preferredStyle: .actionSheet)
+        let anonymousAction = UIAlertAction(title: "Anonymous", style: .default) { _ in }
+        let loginWithGoogleAction = UIAlertAction(title: "Login with 'Google'", style: .default) { _ in }
+        let loginWithFaceBookAction = UIAlertAction(title: "Login with 'FaceBook'", style: .default) { _ in }
+        let loginWithTwitterAction = UIAlertAction(title: "Login with 'Twitter'", style: .default) { _ in }
+        let loginWithGitHubAction = UIAlertAction(title: "Login with 'GitHub'", style: .default) { _ in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        [anonymousAction,
+         loginWithGoogleAction,
+         loginWithFaceBookAction,
+         loginWithTwitterAction,
+         loginWithGitHubAction,
+         cancelAction].forEach(alertController.addAction(_:))
+        present(alertController, animated: true, completion: nil)
     }
 
 }

@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class StudentsListController: UIViewController {
+final class StudentsListController: UIViewController {
     private lazy var _view: StudentListView = view as! StudentListView
     private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
     
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
-        view = StudentListView(frame: UIScreen.main.bounds)
+        view = StudentListView(frame: Constants.Screen.bounds)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

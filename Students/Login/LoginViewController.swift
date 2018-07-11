@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class LoginViewController : UIViewController {
+final class LoginViewController: UIViewController {
     
     private var _view: LoginView{return view as! LoginView}
     private let viewModel: LoginViewModel = LoginViewModel()
     
     override func loadView() {
         super.loadView()
-        view = LoginView(frame: UIScreen.main.bounds)
+        view = LoginView(frame: Constants.Screen.bounds)
     }
     
     override func viewDidLoad() {

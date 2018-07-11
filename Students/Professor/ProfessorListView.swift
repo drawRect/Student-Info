@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfessorListView: UIView {
+final class ProfessorListView: UIView {
 
     //MARK: - iVars
     public let tableView: UITableView = {

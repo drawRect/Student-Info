@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProfessorListViewModel: NSObject {
+final class ProfessorListViewModel: NSObject {
     let professors: Professors
     init(_ professors: Professors) {
         self.professors = professors

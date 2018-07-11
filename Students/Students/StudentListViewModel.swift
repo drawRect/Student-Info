@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StudentListViewModel: NSObject {
+final class StudentListViewModel: NSObject {
     
     private let students: Students
     init(_ students: Students) {

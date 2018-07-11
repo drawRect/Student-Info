@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum Result<Value> {
-    case success(Value)
-    case failure(Error)
-}
-
 enum MockLoaderError: Error {
     case invalidFileName(String)
     case invalidFileURL(URL)

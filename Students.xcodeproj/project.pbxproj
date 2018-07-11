@@ -16,6 +16,11 @@
 		071C9DF01FD60C7F009E9D60 /* StudentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DEF1FD60C7F009E9D60 /* StudentInfoCell.swift */; };
 		071C9DF21FD60D7C009E9D60 /* StudentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DF11FD60D7C009E9D60 /* StudentListView.swift */; };
 		071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */; };
+		074D01CC20F67BA700628C48 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D01CB20F67BA700628C48 /* UIView+Extensions.swift */; };
+		074D01CE20F6805000628C48 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D01CD20F6805000628C48 /* Result.swift */; };
+		074D01D220F6823B00628C48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 074D01D120F6823B00628C48 /* GoogleService-Info.plist */; };
+		074D01D420F686E500628C48 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D01D320F686E500628C48 /* SplashViewController.swift */; };
+		074D01D620F6871700628C48 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074D01D520F6871700628C48 /* SplashView.swift */; };
 		078A9C9C20CBAF1F005C7922 /* Students.json in Resources */ = {isa = PBXBuildFile; fileRef = 078A9C9B20CBAF1F005C7922 /* Students.json */; };
 		078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9C9F20CBFE72005C7922 /* JSONLoader.swift */; };
 		078A9CA620CD0EE3005C7922 /* Professors.json in Resources */ = {isa = PBXBuildFile; fileRef = 078A9CA520CD0EE3005C7922 /* Professors.json */; };
@@ -33,6 +38,7 @@
 		07E4CB1E20DE561E006AA20D /* UIElementUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */; };
 		07E4CB2020E17834006AA20D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1F20E17834006AA20D /* SignupView.swift */; };
 		07E4CB2220E1783E006AA20D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB2120E1783E006AA20D /* SignupViewModel.swift */; };
+		AACE8F98A08C0DC3F466554A /* Pods_Students.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC7600F35197A72ED6E87F3 /* Pods_Students.framework */; };
 		C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52620CE70E300748A15 /* UIColor+Additions.swift */; };
 		C67DF52A20CEA26400748A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF52920CEA26400748A15 /* Constants.swift */; };
 		C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */; };
@@ -55,6 +61,11 @@
 		071C9DEF1FD60C7F009E9D60 /* StudentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoCell.swift; sourceTree = "<group>"; };
 		071C9DF11FD60D7C009E9D60 /* StudentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListView.swift; sourceTree = "<group>"; };
 		071C9DF31FD60D91009E9D60 /* StudentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewModel.swift; sourceTree = "<group>"; };
+		074D01CB20F67BA700628C48 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		074D01CD20F6805000628C48 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		074D01D120F6823B00628C48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		074D01D320F686E500628C48 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		074D01D520F6871700628C48 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		078A9C9B20CBAF1F005C7922 /* Students.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Students.json; sourceTree = "<group>"; };
 		078A9C9F20CBFE72005C7922 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		078A9CA520CD0EE3005C7922 /* Professors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Professors.json; sourceTree = "<group>"; };
@@ -72,6 +83,9 @@
 		07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementUtils.swift; sourceTree = "<group>"; };
 		07E4CB1F20E17834006AA20D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		07E4CB2120E1783E006AA20D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		1BC7600F35197A72ED6E87F3 /* Pods_Students.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Students.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84FB46167DF0A03E1379160C /* Pods-Students.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Students.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Students/Pods-Students.debug.xcconfig"; sourceTree = "<group>"; };
+		B74405800BD67F11C91DAA84 /* Pods-Students.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Students.release.xcconfig"; path = "Pods/Target Support Files/Pods-Students/Pods-Students.release.xcconfig"; sourceTree = "<group>"; };
 		C67DF52620CE70E300748A15 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		C67DF52920CEA26400748A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACE8F98A08C0DC3F466554A /* Pods_Students.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +113,8 @@
 			children = (
 				071C9DD61FD5E892009E9D60 /* Students */,
 				071C9DD51FD5E892009E9D60 /* Products */,
+				75E0F89EDB26ED7AE65FDF24 /* Pods */,
+				336CEA3A2871DD72F89D4F6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +131,8 @@
 			children = (
 				071C9DD71FD5E892009E9D60 /* AppDelegate.swift */,
 				07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */,
+				074D01D320F686E500628C48 /* SplashViewController.swift */,
+				074D01D520F6871700628C48 /* SplashView.swift */,
 				07E4CB1420DBEA79006AA20D /* Signup */,
 				C67FCA8520DA7B6800EBAE78 /* Login */,
 				078A9CA120CD043C005C7922 /* Students */,
@@ -126,6 +145,7 @@
 				071C9DDE1FD5E892009E9D60 /* Assets.xcassets */,
 				071C9DE01FD5E892009E9D60 /* LaunchScreen.storyboard */,
 				071C9DE31FD5E892009E9D60 /* Info.plist */,
+				074D01D120F6823B00628C48 /* GoogleService-Info.plist */,
 			);
 			path = Students;
 			sourceTree = "<group>";
@@ -157,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				078A9C9F20CBFE72005C7922 /* JSONLoader.swift */,
+				074D01CD20F6805000628C48 /* Result.swift */,
 				C67DF52920CEA26400748A15 /* Constants.swift */,
 			);
 			path = Helper;
@@ -189,6 +210,7 @@
 				078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */,
 				C67DF52620CE70E300748A15 /* UIColor+Additions.swift */,
 				D63B020620E206FA00613A22 /* UIViewController+Extension.swift */,
+				074D01CB20F67BA700628C48 /* UIView+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -201,6 +223,23 @@
 				07E4CB2120E1783E006AA20D /* SignupViewModel.swift */,
 			);
 			path = Signup;
+			sourceTree = "<group>";
+		};
+		336CEA3A2871DD72F89D4F6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BC7600F35197A72ED6E87F3 /* Pods_Students.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75E0F89EDB26ED7AE65FDF24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84FB46167DF0A03E1379160C /* Pods-Students.debug.xcconfig */,
+				B74405800BD67F11C91DAA84 /* Pods-Students.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C67FCA8520DA7B6800EBAE78 /* Login */ = {
@@ -230,9 +269,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 071C9DE61FD5E892009E9D60 /* Build configuration list for PBXNativeTarget "Students" */;
 			buildPhases = (
+				8B1A71D3DFBEF627C1606F24 /* [CP] Check Pods Manifest.lock */,
 				071C9DD01FD5E892009E9D60 /* Sources */,
 				071C9DD11FD5E892009E9D60 /* Frameworks */,
 				071C9DD21FD5E892009E9D60 /* Resources */,
+				BEA851E5533C733A4E5DB755 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -284,12 +325,56 @@
 			files = (
 				071C9DE21FD5E892009E9D60 /* LaunchScreen.storyboard in Resources */,
 				078A9CA620CD0EE3005C7922 /* Professors.json in Resources */,
+				074D01D220F6823B00628C48 /* GoogleService-Info.plist in Resources */,
 				078A9C9C20CBAF1F005C7922 /* Students.json in Resources */,
 				071C9DDF1FD5E892009E9D60 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B1A71D3DFBEF627C1606F24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Students-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEA851E5533C733A4E5DB755 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Students/Pods-Students-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Students/Pods-Students-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		071C9DD01FD5E892009E9D60 /* Sources */ = {
@@ -302,6 +387,7 @@
 				C67DF52A20CEA26400748A15 /* Constants.swift in Sources */,
 				078A9CA820CD0F03005C7922 /* Professors.swift in Sources */,
 				C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */,
+				074D01CE20F6805000628C48 /* Result.swift in Sources */,
 				078A9CB320CD1003005C7922 /* ProfessorInfoCell.swift in Sources */,
 				071C9DD81FD5E892009E9D60 /* AppDelegate.swift in Sources */,
 				D63B020B20E23DC500613A22 /* LoginViewModel.swift in Sources */,
@@ -314,8 +400,10 @@
 				071C9DF21FD60D7C009E9D60 /* StudentListView.swift in Sources */,
 				071C9DEE1FD60C3D009E9D60 /* StudentListController.swift in Sources */,
 				07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */,
+				074D01D620F6871700628C48 /* SplashView.swift in Sources */,
 				071C9DEC1FD60A65009E9D60 /* Student.swift in Sources */,
 				078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */,
+				074D01D420F686E500628C48 /* SplashViewController.swift in Sources */,
 				078A9CAA20CD0F0D005C7922 /* Professor.swift in Sources */,
 				078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */,
 				07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */,
@@ -324,6 +412,7 @@
 				071C9DF41FD60D91009E9D60 /* StudentListViewModel.swift in Sources */,
 				071C9DEA1FD60A4B009E9D60 /* Students.swift in Sources */,
 				C67DF52720CE70E300748A15 /* UIColor+Additions.swift in Sources */,
+				074D01CC20F67BA700628C48 /* UIView+Extensions.swift in Sources */,
 				07E4CB2020E17834006AA20D /* SignupView.swift in Sources */,
 				C6F543A220D3C7E00015AC74 /* TableViewHelper.swift in Sources */,
 			);
@@ -456,14 +545,15 @@
 		};
 		071C9DE71FD5E892009E9D60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84FB46167DF0A03E1379160C /* Pods-Students.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FXZ8QVDCM8;
+				DEVELOPMENT_TEAM = 35P9S7STBV;
 				INFOPLIST_FILE = Students/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranjith.Students;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drawrect.students;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,14 +562,15 @@
 		};
 		071C9DE81FD5E892009E9D60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B74405800BD67F11C91DAA84 /* Pods-Students.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FXZ8QVDCM8;
+				DEVELOPMENT_TEAM = 35P9S7STBV;
 				INFOPLIST_FILE = Students/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ranjith.Students;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drawrect.students;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

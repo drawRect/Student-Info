@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SignupView: UIView {
+final class SignupView: UIView {
 
     //MARK: - UIElements
     let nameTextField: UITextField = {
@@ -42,6 +42,8 @@ class SignupView: UIView {
             |> baseTextFieldStyle
             <> setAutocorrectionNo
             <> phoneToolbar
+
+        txtfield.keyboardType = .numberPad
 
         let nxtBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButtonTapped))
         (txtfield.inputAccessoryView as? UIToolbar)?.items?.append(nxtBarButton)
@@ -94,6 +96,14 @@ class SignupView: UIView {
         return btn
     }()
 
+    let moreButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("More...", for: .normal)
+        btn |> baseButtonStyle
+
+        return btn
+    }()
+
     private lazy var stackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
             nameTextField,
@@ -103,7 +113,8 @@ class SignupView: UIView {
             confirmPasswordTextField,
             submitButton,
             loginButton,
-            forgotPasswordButton
+            forgotPasswordButton,
+            moreButton
             ])
         sv.arrangedSubviews.forEach(setTranslatesAutoresizingMaskIntoConstraints)
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -116,16 +127,34 @@ class SignupView: UIView {
         return sv
     }()
 
-    func installConstraints() {
-        backgroundColor = .white
-        addSubview(stackView)
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(stackView)
+        return scrollView
+    }()
 
-        let height = 8*50 + 7*16
+    private func initialSetup() {
+        backgroundColor = .white
+        addTapGesture()
+        addSubview(scrollView)
+    }
+
+    func installConstraints() {
+        initialSetup()
+
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 65),
-            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
-            stackView.heightAnchor.constraint(equalToConstant: CGFloat(height))
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 65),
+            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
             ])
     }
 

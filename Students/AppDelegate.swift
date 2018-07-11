@@ -7,31 +7,47 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder {
 
-    lazy var window: UIWindow? = {
-        let w =  UIWindow(frame: UIScreen.main.bounds)
+    private let window: UIWindow = {
+        let w =  UIWindow(frame: Constants.Screen.bounds)
         w.makeKeyAndVisible()
-        return w }()
-    
+        return w
+    }()
+
+}
+
+extension AppDelegate: UIApplicationDelegate {
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setRootScene()
+        FirebaseApp.configure()
+//        setRootScene()
+        setSplashScreen()
         return true
     }
 }
 
 extension AppDelegate {
+
+    private func setSplashScreen() {
+        let nc = UINavigationController()
+        nc.viewControllers = [SplashViewController()]
+        window.rootViewController = nc
+    }
     private func setRootScene() {
-        let studNC = UINavigationController(.students, child: StudentsListController())
-        let profNC = UINavigationController(.professors, child: ProfessorListController())
-        let signupNC = UINavigationController.init(rootViewController: SignupViewController())
+        let studNC = UINavigationController(.students,
+                                            child: StudentsListController())
+        let profNC = UINavigationController(.professors,
+                                            child: ProfessorListController())
+        let signupNC = UINavigationController(rootViewController: SignupViewController())
 
         let tc = UITabBarController()
         tc.viewControllers = [signupNC,profNC,studNC]
 
-        window?.rootViewController = tc
+        window.rootViewController = tc
     }
 }
 
@@ -42,9 +58,13 @@ enum TabBarType: String {
     var tabBarItem: UITabBarItem {
         switch self {
         case .professors:
-            return UITabBarItem(title: TabBarType.professors.rawValue, image: #imageLiteral(resourceName: "icProfessor"), selectedImage: #imageLiteral(resourceName: "icProfessor"))
+            return UITabBarItem(title: TabBarType.professors.rawValue,
+                                image: #imageLiteral(resourceName: "icProfessor"),
+                                selectedImage: #imageLiteral(resourceName: "icProfessor"))
         case .students:
-            return UITabBarItem(title: TabBarType.students.rawValue, image: #imageLiteral(resourceName: "icStudent"), selectedImage: #imageLiteral(resourceName: "icStudent"))
+            return UITabBarItem(title: TabBarType.students.rawValue,
+                                image: #imageLiteral(resourceName: "icStudent"),
+                                selectedImage: #imageLiteral(resourceName: "icStudent"))
         }
     }
 }

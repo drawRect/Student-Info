@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginView: UIView {
+final class LoginView: UIView {
     
     //MARK: UIElements
     
@@ -54,10 +54,14 @@ class LoginView: UIView {
         return sv
     }()
     
-    func installConstraints() {
+    private func initialSetup() {
         backgroundColor = .white
         addSubview(stackView)
-        
+    }
+    
+    func installConstraints() {
+        initialSetup()
+
         //Why i have given 4*50? because of layout guide
         //isLayoutMarginsRelativeArrangement
         let height:CGFloat = 4*50 + 2*16

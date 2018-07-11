@@ -21,4 +21,8 @@ enum Constants {
         static let professors: String = "Professors.json"
     }
 
+    enum Screen {
+        static let bounds = UIScreen.main.bounds
+    }
+
 }

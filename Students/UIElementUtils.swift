@@ -77,7 +77,7 @@ let setTranslatesAutoresizingMaskIntoConstraints : (UIView) -> Void = {
 }
 
 let phoneToolbar: (UITextField) -> Void = {
-    let toolbar = UIToolbar(frame: CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:50))
+    let toolbar = UIToolbar(frame: CGRect(x:0,y:0,width:Constants.Screen.bounds.width,height:50))
     let flexibleSapceBtnItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     toolbar.items = [flexibleSapceBtnItem]
     $0.inputAccessoryView = toolbar

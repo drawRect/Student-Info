@@ -8,6 +8,6 @@
 
 import Foundation
 
-class SignupViewModel {
+final class SignupViewModel {
     
 }
