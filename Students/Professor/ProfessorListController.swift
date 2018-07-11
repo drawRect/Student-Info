@@ -52,7 +52,7 @@ extension ProfessorListController {
 
     private func fetchProfessorsJSON(completion: @escaping(ProfessorsJSONResponse)) {
         do {
-            let resource = Resource(name: Constants.profJSONFileName, A: Professors.self)
+            let resource = Resource(name: Constants.JSONs.professors, A: Professors.self)
             let professors = try JSONLoader.loadMockFile(resource)
             completion(Result.success(professors))
         } catch (let e){

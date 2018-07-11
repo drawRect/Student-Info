@@ -22,8 +22,8 @@ final class StudentInfoCell: UITableViewCell {
 extension StudentInfoCell {
     func configureCell(model: Student) { 
         self.textLabel?.text = (model.name + ", " + model.age)
-        self.textLabel?.textColor = Constants.titleColor
+        self.textLabel?.textColor = Constants.Colors.title
         self.detailTextLabel?.text = model.address
-        self.detailTextLabel?.textColor = Constants.titleColor
+        self.detailTextLabel?.textColor = Constants.Colors.title
     }
 }

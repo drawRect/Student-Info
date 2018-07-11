@@ -50,7 +50,7 @@ extension ProfessorListViewModel: TVDataSourceConfigurable {
 extension ProfessorListViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = Constants.headerColor
+        header.textLabel?.textColor = Constants.Colors.header
     }
 }
 

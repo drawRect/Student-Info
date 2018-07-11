@@ -10,8 +10,15 @@ import Foundation
 import UIKit
 
 enum Constants {
-    static let titleColor: UIColor = UIColor(hex: 0x154981)
-    static let headerColor: UIColor =  UIColor(hex: 0x7d0234)
-    static let studJSONFileName: String = "Students.json"
-    static let profJSONFileName: String = "Professors.json"
+    
+    enum Colors {
+        static let title: UIColor = UIColor(hex: 0x154981)
+        static let header: UIColor =  UIColor(hex: 0x7d0234)
+    }
+
+    enum JSONs {
+        static let students: String = "Students.json"
+        static let professors: String = "Professors.json"
+    }
+
 }

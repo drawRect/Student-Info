@@ -23,7 +23,7 @@ extension ProfessorInfoCell {
     func configureCell(model: Professor) {
         self.textLabel?.text = (model.name + ". " + model.qualification + ", " + model.age)
         self.detailTextLabel?.text = model.address
-        self.textLabel?.textColor = Constants.titleColor
-        self.detailTextLabel?.textColor = Constants.titleColor
+        self.textLabel?.textColor = Constants.Colors.title
+        self.detailTextLabel?.textColor = Constants.Colors.title
     }
 }

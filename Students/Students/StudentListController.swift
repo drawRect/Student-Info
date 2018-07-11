@@ -53,7 +53,7 @@ extension StudentsListController {
     
     private func fetchStudentsJSON(completion: @escaping(StudentJSONResponse)) {
         do {
-            let resource = Resource(name: Constants.studJSONFileName, A: Students.self)
+            let resource = Resource(name: Constants.JSONs.students, A: Students.self)
             let students = try JSONLoader.loadMockFile(resource)
             completion(Result.success(students))
         } catch (let e){
