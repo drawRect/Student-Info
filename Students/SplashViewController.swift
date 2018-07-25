@@ -10,7 +10,7 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
-    private var _view: SplashView{return view as! SplashView}
+    private lazy var _view = view as! SplashView
 
     //MARK: - Overriden functions
     override func loadView() {

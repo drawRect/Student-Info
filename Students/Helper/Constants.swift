@@ -12,13 +12,13 @@ import UIKit
 enum Constants {
     
     enum Colors {
-        static let title: UIColor = UIColor(hex: 0x154981)
-        static let header: UIColor =  UIColor(hex: 0x7d0234)
+        static let title = UIColor(hex: 0x154981)
+        static let header =  UIColor(hex: 0x7d0234)
     }
 
     enum JSONs {
-        static let students: String = "Students.json"
-        static let professors: String = "Professors.json"
+        static let students = "Students.json"
+        static let professors = "Professors.json"
     }
 
     enum Screen {

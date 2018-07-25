@@ -11,8 +11,8 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    private var _view: LoginView{return view as! LoginView}
-    private let viewModel: LoginViewModel = LoginViewModel()
+    private lazy var _view = view as! LoginView
+    private let viewModel = LoginViewModel()
     
     override func loadView() {
         super.loadView()

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class StudentsListController: UIViewController {
-    private lazy var _view: StudentListView = view as! StudentListView
+    private lazy var _view = view as! StudentListView
     private var tableDataSource: TableViewHelper<StudentListViewModel,StudentInfoCell,Student>?
     
     //MARK: - Overridden functions

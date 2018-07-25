@@ -6,7 +6,6 @@
 //  Copyright © 2018 DrawRect. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UINavigationController {

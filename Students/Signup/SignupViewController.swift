@@ -10,8 +10,8 @@ import UIKit
 
 final class SignupViewController: UIViewController {
 
-    private var _view: SignupView{return view as! SignupView}
-    private let viewModel: SignupViewModel = SignupViewModel()
+    private lazy var _view = view as! SignupView
+    private let viewModel = SignupViewModel()
 
     //MARK: - Overriden functions
     override func loadView() {
@@ -51,7 +51,7 @@ final class SignupViewController: UIViewController {
     }
 
     @objc private func moreButtonClicked() {
-        let alertController = UIAlertController(title: "Choose your signup method", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Choose your Login option", message: nil, preferredStyle: .actionSheet)
         let anonymousAction = UIAlertAction(title: "Anonymous", style: .default) { _ in }
         let loginWithGoogleAction = UIAlertAction(title: "Login with 'Google'", style: .default) { _ in }
         let loginWithFaceBookAction = UIAlertAction(title: "Login with 'FaceBook'", style: .default) { _ in }

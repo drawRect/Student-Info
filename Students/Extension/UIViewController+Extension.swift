@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension UIView {
     public var layoutGuide: UILayoutGuide {
         if #available(iOS 11.0, *) {

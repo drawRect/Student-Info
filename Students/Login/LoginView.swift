@@ -37,6 +37,7 @@ final class LoginView: UIView {
         btn |> baseButtonStyle
         return btn
     }()
+
     
     private lazy var stackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [

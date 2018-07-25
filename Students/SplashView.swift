@@ -25,7 +25,6 @@ class SplashView: UIView {
     }()
 
     lazy var stackView: UIStackView = {
-
         let stackView = UIStackView(arrangedSubviews: [loginBtn,signupBtn])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical

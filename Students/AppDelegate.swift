@@ -25,14 +25,14 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 //        setRootScene()
-        setSplashScreen()
+        setupSplashScreen()
         return true
     }
 }
 
 extension AppDelegate {
 
-    private func setSplashScreen() {
+    private func setupSplashScreen() {
         let nc = UINavigationController()
         nc.viewControllers = [SplashViewController()]
         window.rootViewController = nc

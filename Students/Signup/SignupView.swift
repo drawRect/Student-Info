@@ -6,7 +6,6 @@
 //  Copyright © 2018 DrawRect. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class SignupView: UIView {
@@ -98,7 +97,7 @@ final class SignupView: UIView {
 
     let moreButton: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("More...", for: .normal)
+        btn.setTitle("Login options...", for: .normal)
         btn |> baseButtonStyle
 
         return btn
