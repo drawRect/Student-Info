@@ -88,4 +88,11 @@ let baseButtonStyle: (UIButton) -> Void = {
     $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
     $0.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
     $0.layer.cornerRadius = 8
+    borderStyle($0)
+}
+
+let borderStyle: (UIButton) -> Void = {
+    $0.layer.borderWidth = 1.5
+    $0.layer.borderColor = UIView().tintColor?.cgColor
+    $0.layer.cornerRadius = 3.0
 }

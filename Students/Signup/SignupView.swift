@@ -75,7 +75,6 @@ final class SignupView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Signup", for: .normal)
         btn |> baseButtonStyle
-
         return btn
     }()
 
@@ -83,7 +82,6 @@ final class SignupView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Already have an account?. Tap to Login", for: .normal)
         btn |> baseButtonStyle
-
         return btn
     }()
     let forgotPasswordButton: UIButton = {
@@ -91,7 +89,6 @@ final class SignupView: UIView {
         btn.setTitle("I forgot my password", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn |> baseButtonStyle
-
         return btn
     }()
 

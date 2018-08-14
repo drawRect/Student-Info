@@ -12,15 +12,15 @@ class SplashView: UIView {
 
     lazy var loginBtn: UIButton = {
         let loginBtn = UIButton(type: .system)
-        loginBtn.translatesAutoresizingMaskIntoConstraints = false
         loginBtn.setTitle("Login", for: .normal)
+        loginBtn |> baseButtonStyle
         return loginBtn
     }()
 
     lazy var signupBtn: UIButton = {
         let signupBtn = UIButton(type: .system)
-        signupBtn.translatesAutoresizingMaskIntoConstraints = false
         signupBtn.setTitle("Signup", for: .normal)
+        signupBtn |> baseButtonStyle
         return signupBtn
     }()
 
@@ -28,6 +28,7 @@ class SplashView: UIView {
         let stackView = UIStackView(arrangedSubviews: [loginBtn,signupBtn])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.spacing = 8
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -41,8 +42,8 @@ class SplashView: UIView {
         initialSetup()
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
-            stackView.leftAnchor.constraint(equalTo: leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor),
+            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
+            stackView.rightAnchor.constraint(equalTo: rightAnchor,constant: -8),
             stackView.heightAnchor.constraint(equalToConstant: 100)
             ])
     }
