@@ -40,6 +40,7 @@ let baseTextFieldStyle: (UITextField) -> Void = {
     $0.borderStyle = .roundedRect
 }
 
+
 let emailTextFieldStyle: (UITextField) -> Void =  {
     $0.keyboardType = .emailAddress
     $0.placeholder = "Email"
@@ -85,14 +86,15 @@ let phoneToolbar: (UITextField) -> Void = {
 
 /* UIButton */
 let baseButtonStyle: (UIButton) -> Void = {
-    $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+    $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
     $0.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
     $0.layer.cornerRadius = 8
-    borderStyle($0)
+    buttonThemeStyle($0)
 }
 
-let borderStyle: (UIButton) -> Void = {
+let buttonThemeStyle: (UIButton) -> Void = {
     $0.layer.borderWidth = 1.5
-    $0.layer.borderColor = UIView().tintColor?.cgColor
+    $0.layer.borderColor = UIColor.rgb(r: 50, g: 199, b: 242).cgColor
+    $0.setTitleColor(UIColor.rgb(r: 50, g: 199, b: 242),for: .normal)
     $0.layer.cornerRadius = 3.0
 }

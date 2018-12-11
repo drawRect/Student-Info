@@ -20,9 +20,9 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Splash"
         _view.installConstraints()
         viewAddOns()
+        setupNavBar()
     }
 
     private func viewAddOns() {
@@ -36,6 +36,20 @@ class SplashViewController: UIViewController {
 
     @objc private func signupPressed() {
         navigationController?.pushViewController(SignupViewController(), animated: true)
+    }
+
+    fileprivate func setupNavBar() {
+        navigationItem.title = "Splash"
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        } else {
+            // Fallback on earlier versions
+        }
+        navigationController?.navigationBar.backgroundColor = .yellow
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(r: 50, g: 199, b: 242)
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
 
 }
