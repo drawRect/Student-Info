@@ -40,11 +40,16 @@ class SplashView: UIView {
 
     public func installConstraints() {
         initialSetup()
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
-            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor,constant: -8),
-            stackView.heightAnchor.constraint(equalToConstant: 100)
-            ])
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                //            stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
+                stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
+                stackView.rightAnchor.constraint(equalTo: rightAnchor,constant: -8),
+                stackView.heightAnchor.constraint(equalToConstant: 100),
+                stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant:-10)
+                ])
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
