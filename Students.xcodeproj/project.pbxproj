@@ -33,6 +33,7 @@
 		078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */; };
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
+		07A404A621C8021200863121 /* Box<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A404A521C8021200863121 /* Box<T>.swift */; };
 		07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */; };
 		07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1520DBEA98006AA20D /* SignupViewController.swift */; };
 		07E4CB1E20DE561E006AA20D /* UIElementUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */; };
@@ -78,6 +79,7 @@
 		078A9CB120CD1003005C7922 /* ProfessorListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessorListViewModel.swift; sourceTree = "<group>"; };
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
+		07A404A521C8021200863121 /* Box<T>.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Box<T>.swift"; sourceTree = "<group>"; };
 		07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDataSourceConfigurable.swift; sourceTree = "<group>"; };
 		07E4CB1520DBEA98006AA20D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementUtils.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				C67FCA8620DA7B7D00EBAE78 /* LoginViewController.swift */,
 				D63B020820E2384700613A22 /* LoginView.swift */,
 				D63B020A20E23DC500613A22 /* LoginViewModel.swift */,
+				07A404A521C8021200863121 /* Box<T>.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				078A9CB420CD1003005C7922 /* ProfessorListView.swift in Sources */,
 				C67DF52A20CEA26400748A15 /* Constants.swift in Sources */,
 				078A9CA820CD0F03005C7922 /* Professors.swift in Sources */,
+				07A404A621C8021200863121 /* Box<T>.swift in Sources */,
 				C67FCA8720DA7B7D00EBAE78 /* LoginViewController.swift in Sources */,
 				074D01CE20F6805000628C48 /* Result.swift in Sources */,
 				078A9CB320CD1003005C7922 /* ProfessorInfoCell.swift in Sources */,

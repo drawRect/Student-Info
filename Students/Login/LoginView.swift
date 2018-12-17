@@ -35,6 +35,7 @@ final class LoginView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Login", for: .normal)
         btn |> baseButtonStyle
+        (btn,false) |> toggleThemeStyle
         return btn
     }()
 

@@ -40,7 +40,6 @@ let baseTextFieldStyle: (UITextField) -> Void = {
     $0.borderStyle = .roundedRect
 }
 
-
 let emailTextFieldStyle: (UITextField) -> Void =  {
     $0.keyboardType = .emailAddress
     $0.placeholder = "Email"
@@ -59,10 +58,12 @@ let setAutocorrectionNo: (UITextField) -> Void = {
 
 let nextRetunKeyStyle: (UITextField) -> Void = {
     $0.returnKeyType = .next
+    $0.enablesReturnKeyAutomatically = true
 }
 
 let doneReturnKeyStyle: (UITextField) -> Void = {
     $0.returnKeyType = .done
+    $0.enablesReturnKeyAutomatically = true
 }
 
 let addLeftNRightView: (UITextField) -> Void = {
@@ -97,4 +98,15 @@ let buttonThemeStyle: (UIButton) -> Void = {
     $0.layer.borderColor = UIColor.rgb(r: 50, g: 199, b: 242).cgColor
     $0.setTitleColor(UIColor.rgb(r: 50, g: 199, b: 242),for: .normal)
     $0.layer.cornerRadius = 3.0
+}
+
+let toggleThemeStyle: (UIButton,Bool) -> Void = {
+    $0.isEnabled = $1
+    if $1 {
+        $0.layer.borderColor = UIColor.rgb(r: 50, g: 199, b: 242).cgColor
+        $0.setTitleColor(UIColor.rgb(r: 50, g: 199, b: 242),for: .normal)
+    }else {
+        $0.layer.borderColor = UIColor.rgb(r: 50, g: 199, b: 242).withAlphaComponent(0.5).cgColor
+        $0.setTitleColor(UIColor.rgb(r: 50, g: 199, b: 242).withAlphaComponent(0.5),for: .normal)
+    }
 }

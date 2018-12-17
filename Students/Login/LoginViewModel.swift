@@ -6,9 +6,8 @@
 //  Copyright © 2018 DrawRect. All rights reserved.
 //
 
-import UIKit
-
-final class LoginViewModel {
-
-    
+struct LoginViewModel {
+    var emailTxt = Box<String>()
+    var passwordTxt = Box<String>()
+    var isLoginEnabled = Box<Bool>()
 }
