@@ -9,5 +9,10 @@
 import Foundation
 
 final class SignupViewModel {
-    
+    var nameTxt = Box<String>()
+    var emailTxt = Box<String>()
+    var phoneTxt = Box<String>()
+    var passwordTxt = Box<String>()
+    var confirmPasswordTxt = Box<String>()
+    var isSubmitBtnEnabled = Box<Bool>()
 }

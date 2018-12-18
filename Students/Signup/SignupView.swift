@@ -75,6 +75,7 @@ final class SignupView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Signup", for: .normal)
         btn |> baseButtonStyle
+        (btn,false) |> toggleThemeStyle
         return btn
     }()
 

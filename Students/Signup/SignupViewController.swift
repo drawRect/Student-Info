@@ -23,6 +23,7 @@ final class SignupViewController: UIViewController {
         super.viewDidLoad()
         title = "Signup"
         viewAddOns()
+        setupViewModel()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -33,12 +34,46 @@ final class SignupViewController: UIViewController {
     private func viewAddOns() {
         [_view.nameTextField,
          _view.emailTextField,
+         _view.passwordTextField,
          _view.confirmPasswordTextField,
-         _view.passwordTextField].forEach({$0.delegate = self})
+         _view.phoneTextField
+            ].forEach{
+                $0.addTarget(self, action: #selector(didTypeTextChanges), for: .editingChanged)
+                $0.addTarget(self, action: #selector(didReturnTextField(_:)), for: .editingDidEndOnExit)
+        }
         _view.submitButton.addTarget(self, action: #selector(submitClicked), for: .touchUpInside)
         _view.loginButton.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
         _view.moreButton.addTarget(self, action: #selector(moreButtonClicked), for: .touchUpInside)
         _view.installConstraints()
+    }
+
+    private func setupViewModel() {
+        viewModel.isSubmitBtnEnabled.bind { [unowned self] in
+            (self._view.submitButton,$0!) |> toggleThemeStyle
+        }
+    }
+
+    //MARK: - Selectors
+    @objc func didTypeTextChanges() {
+        viewModel.nameTxt.value = _view.nameTextField.text
+        viewModel.emailTxt.value = _view.emailTextField.text
+        viewModel.phoneTxt.value = _view.phoneTextField.text
+        viewModel.passwordTxt.value = _view.passwordTextField.text
+        viewModel.confirmPasswordTxt.value = _view.confirmPasswordTextField.text
+        viewModel.isSubmitBtnEnabled.value = (((_view.nameTextField.text?.count)! > 0) && (_view.emailTextField.text?.count)! > 0 && ((_view.phoneTextField.text?.count)! > 0) && ((_view.passwordTextField.text?.count)! > 0) && ((_view.confirmPasswordTextField.text?.count)! > 0))
+    }
+    @objc func didReturnTextField(_ textField: UITextField) {
+        textField.resignFirstResponder()
+
+        switch textField {
+        case _view.nameTextField: _view.emailTextField.becomeFirstResponder()
+        case _view.emailTextField: _view.phoneTextField.becomeFirstResponder()
+        case _view.phoneTextField: _view.passwordTextField.becomeFirstResponder()
+        case _view.passwordTextField: _view.confirmPasswordTextField.becomeFirstResponder()
+        case _view.confirmPasswordTextField: submitClicked()
+        default:
+            _view.endEditing(true)
+        }
     }
 
     @objc private func submitClicked() {
@@ -69,18 +104,3 @@ final class SignupViewController: UIViewController {
 
 }
 
-extension SignupViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-
-        switch textField {
-        case _view.nameTextField: _view.emailTextField.becomeFirstResponder()
-        case _view.emailTextField: _view.phoneTextField.becomeFirstResponder()
-        case _view.passwordTextField: _view.confirmPasswordTextField.becomeFirstResponder()
-        case _view.confirmPasswordTextField: submitClicked()
-        default:
-            _view.endEditing(true)
-        }
-        return true
-    }
-}
