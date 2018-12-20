@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class ProfessorInfoCell: UITableViewCell {
-    override init(style: UITableViewCellStyle = .subtitle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle = .subtitle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     required init?(coder aDecoder: NSCoder) {

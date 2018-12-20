@@ -52,7 +52,7 @@ final class LoginView: UIView {
         sv.axis = .vertical
         sv.spacing = 16
         sv.isLayoutMarginsRelativeArrangement = true
-        sv.layoutMargins = UIEdgeInsetsMake(32, 16, 32, 16)
+        sv.layoutMargins = UIEdgeInsets.init(top: 32, left: 16, bottom: 32, right: 16)
         return sv
     }()
     

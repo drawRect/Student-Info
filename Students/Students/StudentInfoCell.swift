@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class StudentInfoCell: UITableViewCell {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -20,10 +20,10 @@ final class StudentInfoCell: UITableViewCell {
 
 //MARK: - Extension|StudentInfoCell
 extension StudentInfoCell {
-    func configureCell(model: Student) { 
-        self.textLabel?.text = (model.name + ", " + model.age)
+    func configureCell(model: StudentListViewModel) {
+        self.textLabel?.text = model.nameNAge
         self.textLabel?.textColor = Constants.Colors.title
-        self.detailTextLabel?.text = model.address
+        self.detailTextLabel?.text = model.student.address
         self.detailTextLabel?.textColor = Constants.Colors.title
     }
 }

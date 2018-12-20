@@ -34,6 +34,7 @@
 		078A9CB820CD1D2B005C7922 /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */; };
 		078A9CE220CD3C84005C7922 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */; };
 		07A404A621C8021200863121 /* Box<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A404A521C8021200863121 /* Box<T>.swift */; };
+		07A404B121CC08E000863121 /* TabBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A404B021CC08E000863121 /* TabBarType.swift */; };
 		07C004C720D9558E008B0C22 /* TVDataSourceConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */; };
 		07E4CB1620DBEA98006AA20D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1520DBEA98006AA20D /* SignupViewController.swift */; };
 		07E4CB1E20DE561E006AA20D /* UIElementUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */; };
@@ -80,6 +81,7 @@
 		078A9CB720CD1D2B005C7922 /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		078A9CE120CD3C84005C7922 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 		07A404A521C8021200863121 /* Box<T>.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Box<T>.swift"; sourceTree = "<group>"; };
+		07A404B021CC08E000863121 /* TabBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarType.swift; sourceTree = "<group>"; };
 		07C004C620D9558E008B0C22 /* TVDataSourceConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDataSourceConfigurable.swift; sourceTree = "<group>"; };
 		07E4CB1520DBEA98006AA20D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		07E4CB1D20DE561E006AA20D /* UIElementUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementUtils.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				078A9C9F20CBFE72005C7922 /* JSONLoader.swift */,
 				074D01CD20F6805000628C48 /* Result.swift */,
 				C67DF52920CEA26400748A15 /* Constants.swift */,
+				07A404B021CC08E000863121 /* TabBarType.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				TargetAttributes = {
 					071C9DD31FD5E892009E9D60 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -399,6 +403,7 @@
 				D63B020B20E23DC500613A22 /* LoginViewModel.swift in Sources */,
 				078A9CA020CBFE72005C7922 /* JSONLoader.swift in Sources */,
 				07E4CB1E20DE561E006AA20D /* UIElementUtils.swift in Sources */,
+				07A404B121CC08E000863121 /* TabBarType.swift in Sources */,
 				078A9CB520CD1003005C7922 /* ProfessorListViewModel.swift in Sources */,
 				078A9CAC20CD0F2D005C7922 /* Resource.swift in Sources */,
 				071C9DF01FD60C7F009E9D60 /* StudentInfoCell.swift in Sources */,
@@ -561,7 +566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.drawrect.students;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -578,7 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.drawrect.students;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -24,8 +24,15 @@ class SplashView: UIView {
         return signupBtn
     }()
 
+    lazy var anonymousBtn: UIButton = {
+        let anonyBtn = UIButton(type: .system)
+        anonyBtn.setTitle("Anonymous", for: .normal)
+        anonyBtn |> baseButtonStyle
+        return anonyBtn
+    }()
+
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [loginBtn,signupBtn])
+        let stackView = UIStackView(arrangedSubviews: [loginBtn,signupBtn,anonymousBtn])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -45,7 +52,7 @@ class SplashView: UIView {
                 //            stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
                 stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
                 stackView.rightAnchor.constraint(equalTo: rightAnchor,constant: -8),
-                stackView.heightAnchor.constraint(equalToConstant: 100),
+                stackView.heightAnchor.constraint(equalToConstant: 150),
                 stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant:-10)
                 ])
         } else {
