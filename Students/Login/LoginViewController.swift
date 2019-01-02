@@ -11,52 +11,102 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    private lazy var _view = view as! LoginView
     fileprivate let viewModel = LoginViewModel()
-    
-    override func loadView() {
-        super.loadView()
-        view = LoginView(frame: Constants.Screen.bounds)
-    }
+
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField
+            |> baseTextFieldStyle
+            <> emailTextFieldStyle
+            <> setAutocorrectionNo
+            <> nextRetunKeyStyle
+        return textField
+    }()
+
+    let passwordField: UITextField = {
+        let textField = UITextField()
+        textField
+            |> baseTextFieldStyle
+            <> passwordTextFieldStyle
+            <> doneReturnKeyStyle
+        return textField
+    }()
+
+    let loginButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Login", for: .normal)
+        btn |> baseButtonStyle
+        (btn,false) |> toggleThemeStyle
+        return btn
+    }()
+
+
+    private lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            emailTextField,
+            passwordField,
+            loginButton
+            ])
+        sv.arrangedSubviews.forEach(setTranslatesAutoresizingMaskIntoConstraints)
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.distribution = .fillEqually
+        sv.axis = .vertical
+        sv.spacing = 16
+        sv.isLayoutMarginsRelativeArrangement = true
+        sv.layoutMargins = UIEdgeInsets.init(top: 32, left: 16, bottom: 32, right: 16)
+        return sv
+    }()
     
     override func viewDidLoad() {
         title = "Login"
         super.viewDidLoad()
-        _view.installConstraints()
+        view.backgroundColor = .white
+        view.addSubview(stackView)
+
+        //Why i have given 4*50? because of layout guide
+        //isLayoutMarginsRelativeArrangement
+        let height:CGFloat = 4*50 + 2*16
+        NSLayoutConstraint.activate([
+            stackView.leftAnchor.constraint(equalTo: view.layoutGuide.leftAnchor),
+            stackView.topAnchor.constraint(equalTo: view.layoutGuide.topAnchor, constant: 65),
+            stackView.rightAnchor.constraint(equalTo: view.layoutGuide.rightAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: height)
+            ])
+
         miscellaneousTasks()
         setupViewModel()
     }
 
     private func setupViewModel() {
         viewModel.isLoginEnabled.bind { [unowned self] in
-            (self._view.loginButton,$0!) |> toggleThemeStyle
+            (self.loginButton,$0!) |> toggleThemeStyle
         }
     }
 
     private func miscellaneousTasks() {
-        [_view.emailTextField,
-         _view.passwordField
+        [emailTextField,
+         passwordField
             ].forEach{
                 $0.addTarget(self, action: #selector(didTypeTextChanges), for: .editingChanged)
                 $0.addTarget(self, action: #selector(didReturnTextField(_:)), for: .editingDidEndOnExit)
         }
-        _view.loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
     }
 
     @objc func didTypeTextChanges() {
-        viewModel.emailTxt.value = _view.emailTextField.text
-        viewModel.passwordTxt.value = _view.passwordField.text
-        viewModel.isLoginEnabled.value = (((_view.emailTextField.text?.count)! > 0) && (_view.passwordField.text?.count)! > 0)
+        viewModel.emailTxt.value = emailTextField.text
+        viewModel.passwordTxt.value = passwordField.text
+        viewModel.isLoginEnabled.value = (((emailTextField.text?.count)! > 0) && (passwordField.text?.count)! > 0)
     }
 
     @objc func didReturnTextField(_ textField: UITextField) {
         textField.resignFirstResponder()
 
         switch textField {
-        case _view.emailTextField: _view.passwordField.becomeFirstResponder()
-        case _view.passwordField: loginBtnTapped()
+        case emailTextField: passwordField.becomeFirstResponder()
+        case passwordField: loginBtnTapped()
         default:
-            self.view.endEditing(true)
+            view.endEditing(true)
         }
     }
     

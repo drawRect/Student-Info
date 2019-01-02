@@ -10,39 +10,51 @@ import Foundation
 import UIKit
 
 final class StudentsListController: UIViewController {
-    private lazy var _view = view as! StudentListView
     private var tableDataSource: TableViewHelper<StudentsListController,StudentInfoCell,StudentListViewModel>?
     var dataSource:[StudentListViewModel] = []
 
+    public let tableView: UITableView = {
+        let tv = UITableView()
+        tv.register(StudentInfoCell.self, forCellReuseIdentifier: StudentInfoCell.reuseIdentifier)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+
     //MARK: - Overridden functions
-    override func loadView() {
-        super.loadView()
-        view = StudentListView(frame: Constants.Screen.bounds)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Students"
         loadDataSource()
+
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
 }
 
-
 //MARK: - Extension|StudentsListController
 extension StudentsListController {
-    private func loadDataSource() {
-        fetchStudentsJSON(completion: {[weak self] (result) in
+   @objc private func loadDataSource() {
+        showLoadingViewWithMessage(message: "Loading...")
+        fetchStudentsJSON(completion: {[unowned self] (result) in
+            print(Date())
+            self.hideLoadingView()
             switch result {
             case let .success(studs):
                 DispatchQueue.main.async {
-                    self?.dataSource = studs.students.map(StudentListViewModel.init)
-                    self?.tableDataSource = TableViewHelper(source: self!) {cell,model in
+                    self.dataSource = studs.students.map(StudentListViewModel.init)
+                    self.tableDataSource = TableViewHelper(source: self) {cell,model in
                         cell.configureCell(model: model)
                         return cell
                     }
-                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(studs.students.count) Students")
-                    self?._view.tableView.dataSource = self?.tableDataSource
-                    self?._view.tableView.delegate = self
-                    self?._view.tableView.reloadData()
+
+                    self.tableView.tableFooterView = UILabel(footerString:"\(studs.students.count) Students")
+                    self.tableView.dataSource = self.tableDataSource
+                    self.tableView.delegate = self
+                    self.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
@@ -53,12 +65,14 @@ extension StudentsListController {
     private typealias StudentJSONResponse = (_ result: Result<Students>)->()
     
     private func fetchStudentsJSON(completion: @escaping(StudentJSONResponse)) {
-        do {
-            let resource = Resource(name: Constants.JSONs.students, A: Students.self)
-            let students = try JSONLoader.loadMockFile(resource)
-            completion(Result.success(students))
-        } catch (let e){
-            completion(Result.failure(e))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+5) {
+            do {
+                let resource = Resource(name: Constants.JSONs.students, A: Students.self)
+                let students = try JSONLoader.loadMockFile(resource)
+                completion(Result.success(students))
+            } catch (let e){
+                completion(Result.failure(e))
+            }
         }
     }
 

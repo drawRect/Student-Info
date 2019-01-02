@@ -10,18 +10,160 @@ import UIKit
 
 final class SignupViewController: UIViewController {
 
-    private lazy var _view = view as! SignupView
     private let viewModel = SignupViewModel()
 
-    //MARK: - Overriden functions
-    override func loadView() {
-        super.loadView()
-        view = SignupView(frame: Constants.Screen.bounds)
+    let nameTextField: UITextField = {
+        let txtfield = UITextField()
+        txtfield.placeholder = "Name"
+        txtfield
+            |> baseTextFieldStyle
+            <> nextRetunKeyStyle
+            <> setAutocorrectionNo
+
+        return txtfield
+    }()
+
+    let emailTextField: UITextField = {
+        let txtfield = UITextField()
+        txtfield
+            |> baseTextFieldStyle
+            <> emailTextFieldStyle
+            <> setAutocorrectionNo
+            <> nextRetunKeyStyle
+
+        return txtfield
+    }()
+
+    let phoneTextField: UITextField = {
+        let txtfield = UITextField()
+        txtfield.placeholder = "Phone"
+
+        txtfield
+            |> baseTextFieldStyle
+            <> setAutocorrectionNo
+            <> phoneToolbar
+
+        txtfield.keyboardType = .numberPad
+
+        let nxtBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextButtonTapped))
+        (txtfield.inputAccessoryView as? UIToolbar)?.items?.append(nxtBarButton)
+
+        return txtfield
+    }()
+
+    let passwordTextField: UITextField = {
+        let txtfield = UITextField()
+        txtfield
+            |> baseTextFieldStyle
+            <> nextRetunKeyStyle
+            <> passwordTextFieldStyle
+
+        return txtfield
+    }()
+
+    let confirmPasswordTextField: UITextField = {
+        let txtfield = UITextField()
+        txtfield
+            |> baseTextFieldStyle
+            <> nextRetunKeyStyle
+            <> passwordTextFieldStyle
+            <> doneReturnKeyStyle
+
+        return txtfield
+    }()
+
+    let submitButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Signup", for: .normal)
+        btn |> baseButtonStyle
+        (btn,false) |> toggleThemeStyle
+        return btn
+    }()
+
+    let loginButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Already have an account?. Tap to Login", for: .normal)
+        btn |> baseButtonStyle
+        return btn
+    }()
+    let forgotPasswordButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("I forgot my password", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn |> baseButtonStyle
+        return btn
+    }()
+
+    let moreButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Login options...", for: .normal)
+        btn |> baseButtonStyle
+
+        return btn
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            nameTextField,
+            emailTextField,
+            phoneTextField,
+            passwordTextField,
+            confirmPasswordTextField,
+            submitButton,
+            loginButton,
+            forgotPasswordButton,
+            moreButton
+            ])
+        sv.arrangedSubviews.forEach(setTranslatesAutoresizingMaskIntoConstraints)
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.distribution = .fillEqually
+        sv.axis = .vertical
+        sv.spacing = 16
+        sv.isLayoutMarginsRelativeArrangement = true
+        sv.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
+
+        return sv
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(stackView)
+        return scrollView
+    }()
+
+
+    func installConstraints() {
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            ])
     }
+
+    @objc func nextButtonTapped() {
+        view.endEditing(true)
+        passwordTextField.becomeFirstResponder()
+    }
+
+    //MARK: - Overriden functions
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         title = "Signup"
+        view.addTapGesture()
+        view.addSubview(scrollView)
         viewAddOns()
         setupViewModel()
     }
@@ -32,47 +174,47 @@ final class SignupViewController: UIViewController {
 
     //MARK: - Private functions
     private func viewAddOns() {
-        [_view.nameTextField,
-         _view.emailTextField,
-         _view.passwordTextField,
-         _view.confirmPasswordTextField,
-         _view.phoneTextField
+        [nameTextField,
+         emailTextField,
+         passwordTextField,
+         confirmPasswordTextField,
+         phoneTextField
             ].forEach{
                 $0.addTarget(self, action: #selector(didTypeTextChanges), for: .editingChanged)
                 $0.addTarget(self, action: #selector(didReturnTextField(_:)), for: .editingDidEndOnExit)
         }
-        _view.submitButton.addTarget(self, action: #selector(submitClicked), for: .touchUpInside)
-        _view.loginButton.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
-        _view.moreButton.addTarget(self, action: #selector(moreButtonClicked), for: .touchUpInside)
-        _view.installConstraints()
+        submitButton.addTarget(self, action: #selector(submitClicked), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(moreButtonClicked), for: .touchUpInside)
+        installConstraints()
     }
 
     private func setupViewModel() {
         viewModel.isSubmitBtnEnabled.bind { [unowned self] in
-            (self._view.submitButton,$0!) |> toggleThemeStyle
+            (self.submitButton,$0!) |> toggleThemeStyle
         }
     }
 
     //MARK: - Selectors
     @objc func didTypeTextChanges() {
-        viewModel.nameTxt.value = _view.nameTextField.text
-        viewModel.emailTxt.value = _view.emailTextField.text
-        viewModel.phoneTxt.value = _view.phoneTextField.text
-        viewModel.passwordTxt.value = _view.passwordTextField.text
-        viewModel.confirmPasswordTxt.value = _view.confirmPasswordTextField.text
-        viewModel.isSubmitBtnEnabled.value = (((_view.nameTextField.text?.count)! > 0) && (_view.emailTextField.text?.count)! > 0 && ((_view.phoneTextField.text?.count)! > 0) && ((_view.passwordTextField.text?.count)! > 0) && ((_view.confirmPasswordTextField.text?.count)! > 0))
+        viewModel.nameTxt.value = nameTextField.text
+        viewModel.emailTxt.value = emailTextField.text
+        viewModel.phoneTxt.value = phoneTextField.text
+        viewModel.passwordTxt.value = passwordTextField.text
+        viewModel.confirmPasswordTxt.value = confirmPasswordTextField.text
+        viewModel.isSubmitBtnEnabled.value = (((nameTextField.text?.count)! > 0) && (emailTextField.text?.count)! > 0 && ((phoneTextField.text?.count)! > 0) && ((passwordTextField.text?.count)! > 0) && ((confirmPasswordTextField.text?.count)! > 0))
     }
     @objc func didReturnTextField(_ textField: UITextField) {
         textField.resignFirstResponder()
 
         switch textField {
-        case _view.nameTextField: _view.emailTextField.becomeFirstResponder()
-        case _view.emailTextField: _view.phoneTextField.becomeFirstResponder()
-        case _view.phoneTextField: _view.passwordTextField.becomeFirstResponder()
-        case _view.passwordTextField: _view.confirmPasswordTextField.becomeFirstResponder()
-        case _view.confirmPasswordTextField: submitClicked()
+        case nameTextField: emailTextField.becomeFirstResponder()
+        case emailTextField: phoneTextField.becomeFirstResponder()
+        case phoneTextField: passwordTextField.becomeFirstResponder()
+        case passwordTextField: confirmPasswordTextField.becomeFirstResponder()
+        case confirmPasswordTextField: submitClicked()
         default:
-            _view.endEditing(true)
+            view.endEditing(true)
         }
     }
 

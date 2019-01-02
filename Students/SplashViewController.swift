@@ -10,25 +10,66 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
-    private lazy var _view = view as! SplashView
+    lazy var loginBtn: UIButton = {
+        let loginBtn = UIButton(type: .system)
+        loginBtn.setTitle("Login", for: .normal)
+        loginBtn |> baseButtonStyle
+        return loginBtn
+    }()
+
+    lazy var signupBtn: UIButton = {
+        let signupBtn = UIButton(type: .system)
+        signupBtn.setTitle("Signup", for: .normal)
+        signupBtn |> baseButtonStyle
+        return signupBtn
+    }()
+
+    lazy var anonymousBtn: UIButton = {
+        let anonyBtn = UIButton(type: .system)
+        anonyBtn.setTitle("Anonymous", for: .normal)
+        anonyBtn |> baseButtonStyle
+        return anonyBtn
+    }()
+
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [loginBtn,signupBtn,anonymousBtn])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
+    public func installConstraints() {
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                //            stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
+                stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
+                stackView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -8),
+                stackView.heightAnchor.constraint(equalToConstant: 150),
+                stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant:-10)
+                ])
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 
     //MARK: - Overriden functions
-    override func loadView() {
-        super.loadView()
-        view = SplashView(frame: Constants.Screen.bounds)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        view.addSubview(stackView)
         navigationItem.title = "Splash"
-        _view.installConstraints()
+        installConstraints()
         viewAddOns()
+//        self.showLoadingViewWithMessage(message: "Loading...")
     }
 
     private func viewAddOns() {
-        _view.loginBtn.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
-        _view.signupBtn.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
-        _view.anonymousBtn.addTarget(self, action: #selector(anonymousPressed), for: .touchUpInside)
+        loginBtn.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+        signupBtn.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
+        anonymousBtn.addTarget(self, action: #selector(anonymousPressed), for: .touchUpInside)
     }
 
     @objc private func loginPressed() {
@@ -48,24 +89,10 @@ class SplashViewController: UIViewController {
         profNC.setupAppThemeBar()
 
         let tc = UITabBarController()
-        tc.viewControllers = [profNC,studNC]
+        tc.viewControllers = [studNC,profNC]
+//        navigationController?.pushViewController(tc, animated: true)
 
         (UIApplication.shared.delegate as! AppDelegate).window.rootViewController = tc
     }
 
-}
-
-extension UINavigationController {
-    func setupAppThemeBar() {
-        if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
-            navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        } else {
-            // Fallback on earlier versions
-        }
-        navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = UIColor.rgb(r: 50, g: 199, b: 242)
-        navigationBar.tintColor = UIColor.white
-    }
 }

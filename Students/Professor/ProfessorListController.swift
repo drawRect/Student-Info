@@ -10,16 +10,23 @@ import Foundation
 import UIKit
 
 final class ProfessorListController: UIViewController {
-    private lazy var _view = view as! ProfessorListView
     private var tableDataSource: TableViewHelper<ProfessorListViewModel,ProfessorInfoCell,Professor>?
+    public let tableView: UITableView = {
+        let tv = UITableView(frame: .zero)
+        tv.register(ProfessorInfoCell.classForCoder(), forCellReuseIdentifier: ProfessorInfoCell.reuseIdentifier)
+        tv.tableFooterView = UIView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
 
-    //MARK: - Overridden functions
-    override func loadView() {
-        super.loadView()
-        view = ProfessorListView(frame: Constants.Screen.bounds)
-    }
+    //MARK: - Overriden functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                                     tableView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                                     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
         title = "Professors"
         loadDataSource()
     }
@@ -28,19 +35,18 @@ final class ProfessorListController: UIViewController {
 //MARK: - Extension|ProfessorListController
 extension ProfessorListController {
     private func loadDataSource() {
-        fetchProfessorsJSON(completion: {[weak self] (result) in
+        fetchProfessorsJSON(completion: {[unowned self] (result) in
             switch result {
             case let .success(profs):
                 DispatchQueue.main.async {
                     let viewModel = ProfessorListViewModel(profs)
-                    self?.tableDataSource = TableViewHelper(source: viewModel) {cell,model in
+                    self.tableDataSource = TableViewHelper(source: viewModel) {cell,model in
                         cell.configureCell(model: model)
                         return cell
                     }
-                    self?._view.tableView.tableFooterView = UILabel(footerString:"\(profs.professors.count) Professors")
-                    self?._view.tableView.dataSource = self?.tableDataSource
-                    self?._view.tableView.delegate = viewModel
-                    self?._view.tableView.reloadData()
+                    self.tableView.tableFooterView = UILabel(footerString:"\(profs.professors.count) Professors")
+                    self.tableView.dataSource = self.tableDataSource
+                    self.tableView.reloadData()
                 }
             case let .failure(e):
                 debugPrint(e.localizedDescription)
