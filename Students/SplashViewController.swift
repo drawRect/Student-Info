@@ -43,7 +43,6 @@ class SplashViewController: UIViewController {
     public func installConstraints() {
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
-                //            stackView.topAnchor.constraint(equalTo: topAnchor, constant:(frame.height-100)/2),
                 stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
                 stackView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -8),
                 stackView.heightAnchor.constraint(equalToConstant: 150),
@@ -63,7 +62,6 @@ class SplashViewController: UIViewController {
         navigationItem.title = "Splash"
         installConstraints()
         viewAddOns()
-//        self.showLoadingViewWithMessage(message: "Loading...")
     }
 
     private func viewAddOns() {
@@ -90,8 +88,6 @@ class SplashViewController: UIViewController {
 
         let tc = UITabBarController()
         tc.viewControllers = [studNC,profNC]
-//        navigationController?.pushViewController(tc, animated: true)
-
         (UIApplication.shared.delegate as! AppDelegate).window.rootViewController = tc
     }
 
