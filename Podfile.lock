@@ -66,7 +66,7 @@ DEPENDENCIES:
   - Overture (~> 0.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -94,4 +94,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9cbd657fa2d243eff479fda04119032b126ce9cf
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.9.3

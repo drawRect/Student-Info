@@ -8,6 +8,10 @@
 
 import UIKit
 
+//Refactored:
+//Variable names are declared as NOUN
+//Function names are used as Verb
+
 class SplashViewController: UIViewController {
 
     lazy var loginBtn: UIButton = {
@@ -40,7 +44,7 @@ class SplashViewController: UIViewController {
         return stackView
     }()
 
-    public func installConstraints() {
+    public func setLayoutConstraints() {
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
@@ -57,38 +61,47 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setLayoutConstraints()
+        setButtonHookups()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(stackView)
         navigationItem.title = "Splash"
-        installConstraints()
-        viewAddOns()
     }
 
-    private func viewAddOns() {
-        loginBtn.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
-        signupBtn.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
-        anonymousBtn.addTarget(self, action: #selector(anonymousPressed), for: .touchUpInside)
+    private func setButtonHookups() {
+        loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+        signupBtn.addTarget(self, action: #selector(signupBtnTapped), for: .touchUpInside)
+        anonymousBtn.addTarget(self, action: #selector(anonymousBtnTapped), for: .touchUpInside)
     }
 
-    @objc private func loginPressed() {
+    @objc private func loginBtnTapped() {
         navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 
-    @objc private func signupPressed() {
+    @objc private func signupBtnTapped() {
         navigationController?.pushViewController(SignupViewController(), animated: true)
     }
 
-    @objc private func anonymousPressed() {
-        let studNC = UINavigationController(
-            .students, child: StudentsListController())
-        let profNC = UINavigationController(
-            .professors,child: ProfessorListController())
-        studNC.setupAppThemeBar()
-        profNC.setupAppThemeBar()
+    @objc private func anonymousBtnTapped() {
+        let studNavController = UINavigationController(
+            .students, child: StudentsListController()
+        )
+        let profNavController = UINavigationController(
+            .professors,child: ProfessorListController()
+        )
+        studNavController.setupNavigationBarTheme()
+        profNavController.setupNavigationBarTheme()
 
-        let tc = UITabBarController()
-        tc.viewControllers = [studNC,profNC]
-        (UIApplication.shared.delegate as! AppDelegate).window.rootViewController = tc
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [studNavController,profNavController]
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        appDelegate.window.rootViewController = tabBarController
     }
 
 }

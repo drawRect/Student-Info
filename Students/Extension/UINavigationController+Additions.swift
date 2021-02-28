@@ -15,7 +15,7 @@ extension UINavigationController {
         self.viewControllers = [child]
     }
 
-    func setupAppThemeBar() {
+    func setupNavigationBarTheme() {
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]

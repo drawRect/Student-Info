@@ -34,7 +34,7 @@ extension AppDelegate {
     private func setupSplashScreen() {
         let nc = UINavigationController()
         nc.viewControllers = [SplashViewController()]
-        nc.setupAppThemeBar()
+        nc.setupNavigationBarTheme()
         window.rootViewController = nc
     }
 }
